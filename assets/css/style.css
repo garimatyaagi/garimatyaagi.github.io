@@ -207,28 +207,9 @@ h3 {
     padding-top: 1rem;
 }
 
-.essays-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.essays-page h1 {
+    margin-top: 0;
     margin-bottom: 2rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid var(--border-color);
-}
-
-.essays-header h1 {
-    margin: 0;
-    font-size: 2rem;
-}
-
-.back-link {
-    color: var(--accent-color);
-    text-decoration: none;
-    font-size: 0.95rem;
-}
-
-.back-link:hover {
-    text-decoration: underline;
 }
 
 .essays-list {
