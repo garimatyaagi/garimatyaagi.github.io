@@ -24,6 +24,21 @@ excerpt: "1–2 sentence summary for the homepage list."
 - First paragraph should hook; keep paragraphs short.
 - Link internally with `[text]({{ "/path" | relative_url }})`.
 
+### Examples
+- **Standard post:** create `_posts/2025-03-01-focus.md` with:
+```markdown
+---
+layout: post
+title: Why Focus Wins
+date: 2025-03-01
+categories: [strategy]
+excerpt: "Notes on narrowing the work to what actually moves the needle."
+---
+
+I used to chase too many projects. Here's how I cut to the essentials...
+```
+- **Favorite post (shows on homepage list):** add `tags: [favorite]` to the front matter. The homepage block shows the publish date, linked title, and your excerpt.
+
 ## What the site does
 - **Homepage (`index.md`, layout: home):** shows your intro text plus a “favorites” list of posts tagged `favorite` (date, title, excerpt).
 - **Essays page (`essays.md`, layout: essays):** lists all posts with title and month/year; header nav toggles between “essays” and “about me”.
