@@ -19,7 +19,7 @@ html {
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-family: Georgia, serif;
     color: var(--main-color);
     background-color: var(--background);
 }
@@ -69,15 +69,37 @@ body {
     flex: 1;
 }
 
+h1,
+h2,
+h3 {
+    font-weight: bold;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-top: 0;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+h3 {
+    font-size: 1.25rem;
+}
+
 /* Posts */
 .post-list {
-    list-style: none;
+    list-style: disc;
+    margin-left: 1.5rem;
 }
 
 .post-list li {
-    margin-bottom: 2rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0;
+    border-bottom: none;
 }
 
 .post-list li:last-child {
@@ -87,12 +109,14 @@ body {
 .post-meta {
     color: var(--light-color);
     font-size: 0.9rem;
+    display: block;
+    margin-bottom: 0.25rem;
 }
 
 .post-link {
     color: var(--accent-color);
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .post-link:hover {
@@ -100,13 +124,21 @@ body {
 }
 
 .post-list h3 {
-    margin: 0.5rem 0;
-    font-size: 1.5rem;
+    margin: 0;
+    font-size: 1.2rem;
+    display: inline;
 }
 
-.post-title {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
+/* Home page content */
+.home {
+    line-height: 1.8;
+}
+
+.home p,
+.home strong {
+    font-family: Georgia, serif;
+    margin-bottom: 1rem;
+    color: var(--main-color);
 }
 
 .post-header {

@@ -6,7 +6,7 @@ email: garimatyagi268@gmail.com
 github_username: garimatyaagi
 twitter_username: gartyagi
 url: https://lettersbyg.com
-baseurl: ""
+baseurl: "./"
 
 # Build settings
 markdown: kramdown
