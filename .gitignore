@@ -15,6 +15,7 @@ Gemfile.lock
 *.swp
 *.swo
 *~
+.obsidian/
 
 # OS
 Thumbs.db
