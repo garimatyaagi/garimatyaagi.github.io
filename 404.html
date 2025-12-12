@@ -1,0 +1,14 @@
+---
+layout: default
+permalink: /404.html
+---
+<div class="not-found">
+    <p>Page not found. Redirecting to the homepage…</p>
+    <p><a href="{{ "/" | relative_url }}">Go to homepage</a></p>
+</div>
+<script>
+    (function () {
+        var home = "{{ '/' | relative_url }}";
+        window.location.replace(home);
+    }());
+</script>
