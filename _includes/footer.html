@@ -4,27 +4,26 @@
             <div class="footer-col footer-col-1">
                 <ul class="contact-list">
                     <li class="p-name">{{ site.title | escape }}</li>
-                    {%- if site.email -%}
-                    <li><a class="u-email" href="mailto:{{ site.email }}">{{ site.email }}</a></li>
-                    {%- endif -%}
                 </ul>
             </div>
 
             <div class="footer-col footer-col-2">
+                RSS feed available 
                 {%- if site.rss_feed -%}
-                <a href="{{ site.rss_feed }}">RSS Feed</a>
+                <a href="{{ site.rss_feed }}">here</a>
                 {%- else -%}
-                <a href="/feed.xml">RSS Feed</a>
+                <a href="/feed.xml">here</a>
                 {%- endif -%}
             </div>
         </div>
 
         <div class="social-links">
-            {%- if site.github_username -%}
-            <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener">GitHub</a>
-            {%- endif -%}
+            Follow me at
             {%- if site.twitter_username -%}
-            <a href="https://twitter.com/{{ site.twitter_username }}" target="_blank" rel="noopener">Twitter</a>
+            <a href="https://x.com/{{ site.twitter_username }}" target="_blank" rel="noopener">X</a>
+            {%- endif -%}
+            {%- if site.linkedin_username -%}
+            <a href="https://linkedin.com/in/{{ site.linkedin_username }}" target="_blank" rel="noopener">LinkedIn</a>
             {%- endif -%}
         </div>
     </div>
