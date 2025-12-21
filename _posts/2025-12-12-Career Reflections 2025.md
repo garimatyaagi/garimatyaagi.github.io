@@ -7,15 +7,15 @@ categories:
   - Thoughts
 excerpt: On original content, AI, and why I'm starting this blog.
 ---
-This one is to a friend who I haven't talked to in 2025
+This one is to a friend who lost touch but still thinks about me
 
 Hi,
 
-2025 was wild. I hated it and I loved it. It was a year that brought me back to life.
+I'll try to be articulate but there is just so much to say. This is my space without a word limit. But tldr if you don't want to read the full thing: **2025 was wild. I hated it and I loved it. It was a year that brought me back to life.**
 
 ***Where was I at the start of the year?***
 
-I had completed 2.5 years at MyMuse and were moving towards completing 3 years. I was working remotely as Head of Business - a role which was still new and exciting. The company was doing great, I was doing okay. I had started to think a lot about life in general and the ambition to start something of my own had started brewing. It was also the time where I had started leaning towards skipping bschool journey altogether. This was big as I had dreamed of attending a prestigious bschool for close to 4 years now. 
+I had completed 2.5 years at my job at MyMuse and were moving towards completing 3 years. I was working remotely as Head of Business - a role which was still new and exciting. The company was doing great, I was doing okay. I had started to think a lot about life in general and the ambition to start something of my own had started brewing. It was also the time where I had started leaning towards skipping bschool journey altogether. This was big as I had dreamed of attending a prestigious bschool for close to 4 years now. 
 
 
 ***What objectively changed?***
@@ -58,6 +58,15 @@ I would say discipline. I've had cycles of sleeping at 4pm and waking up at 11pm
 - I regret missed chances more than missed opportunities
   
 - Career is a part of life. Goal in life is to maximise happiness. Career should also lead to maximising happiness
+
+
+*Oscar Wilde said that if you know what you want to be, then you inevitably become it. That is your punishment. But if you never know, then you can be anything. There is a truth to that. **We are not nouns, we are verbs.** I am not a thing — an actor, a writer — I am a person who does things — I write, I act — and I never know what I am going to do next. I think you can be imprisoned if you think of yourself as a noun.*
+**~ Stephen Fry**
+
+The exact Wilde quote to which Fry is referring is this:
+
+*“If you want to be a grocer, or a general, or a politician, or a judge, you will invariably become it; that is your punishment. If you never know what you want to be, if you live what some might call the dynamic life — but what I will call the artistic life — if each day you are unsure of who you are and what you know you will never become anything, and that is your reward.”*
+**~ Oscar Wilde**
 
 —
 
