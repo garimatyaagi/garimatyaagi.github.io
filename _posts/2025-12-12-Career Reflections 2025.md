@@ -7,7 +7,7 @@ categories:
   - Thoughts
 excerpt: On original content, AI, and why I'm starting this blog.
 ---
-This one is to a friend who I haven't talked to this year.
+This one is to a friend who I haven't talked to in 2025
 
 Hi,
 
