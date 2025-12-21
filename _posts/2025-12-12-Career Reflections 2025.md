@@ -60,7 +60,7 @@ I would say discipline. I've had cycles of sleeping at 4pm and waking up at 11pm
 - Career is a part of life. Goal in life is to maximise happiness. Career should also lead to maximising happiness
 
 
-*Oscar Wilde said that if you know what you want to be, then you inevitably become it. That is your punishment. But if you never know, then you can be anything. There is a truth to that. **We are not nouns, we are verbs.** I am not a thing — an actor, a writer — I am a person who does things — I write, I act — and I never know what I am going to do next. I think you can be imprisoned if you think of yourself as a noun.*
+"*Oscar Wilde said that if you know what you want to be, then you inevitably become it. That is your punishment. But if you never know, then you can be anything. There is a truth to that. **We are not nouns, we are verbs.** I am not a thing — an actor, a writer — I am a person who does things — I write, I act — and I never know what I am going to do next. I think you can be imprisoned if you think of yourself as a noun.*"
 **~ Stephen Fry**
 
 The exact Wilde quote to which Fry is referring is this:
