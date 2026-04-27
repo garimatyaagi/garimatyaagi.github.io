@@ -93,6 +93,26 @@ permalink: /admin/
         .btn-secondary:hover { background: var(--text); color: var(--bg); }
         .error { color: #c44; font-size: 0.75rem; margin-top: 0.5rem; }
 
+        /* Tabs */
+        .tabs {
+            display: flex; gap: 0; border-bottom: 1px solid var(--border);
+            margin-bottom: 2rem;
+        }
+        .tab {
+            padding: 0.7rem 1.5rem;
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.78rem; font-weight: 500;
+            background: transparent; color: var(--text-muted);
+            border: none; border-bottom: 2px solid transparent;
+            cursor: pointer; transition: all 0.2s;
+            margin-bottom: -1px;
+        }
+        .tab:hover { color: var(--text); }
+        .tab.active {
+            color: var(--text); border-bottom-color: var(--text); font-weight: 600;
+        }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
         /* Editor */
         #editor-screen { display: none; max-width: 780px; margin: 0 auto; padding: 2rem; }
         .field { margin-bottom: 1.5rem; }
@@ -189,6 +209,9 @@ permalink: /admin/
             border: 1px solid var(--border); border-radius: 2px; outline: none;
         }
         .upload-actions { display: flex; gap: 0.5rem; justify-content: center; }
+
+        /* Loading spinner */
+        .loading { font-size: 0.78rem; color: var(--text-muted); padding: 2rem 0; }
     </style>
 </head>
 <body>
@@ -215,26 +238,46 @@ permalink: /admin/
 
     <!-- Editor -->
     <div id="editor-screen">
-        <div class="field">
-            <label>title</label>
-            <input type="text" id="post-title" placeholder="The title of your essay">
+        <div class="tabs">
+            <button class="tab active" onclick="switchTab('essay')">new essay</button>
+            <button class="tab" onclick="switchTab('about')">edit about</button>
         </div>
-        <div class="field">
-            <label>date</label>
-            <input type="date" id="post-date">
+
+        <!-- New Essay Tab -->
+        <div class="tab-content active" id="tab-essay">
+            <div class="field">
+                <label>title</label>
+                <input type="text" id="post-title" placeholder="The title of your essay">
+            </div>
+            <div class="field">
+                <label>date</label>
+                <input type="date" id="post-date">
+            </div>
+            <div class="field">
+                <label>excerpt (optional - shows on essays list)</label>
+                <textarea id="post-excerpt" rows="2" placeholder="A short summary..."></textarea>
+            </div>
+            <div class="field">
+                <label>content</label>
+                <div id="editor-essay"></div>
+            </div>
+            <div class="editor-actions">
+                <button class="btn" id="publish-btn" onclick="handlePublish()">publish</button>
+                <button class="btn btn-secondary" onclick="handleSaveDraft()">save draft</button>
+                <span class="status" id="status-msg"></span>
+            </div>
         </div>
-        <div class="field">
-            <label>excerpt (optional - shows on essays list)</label>
-            <textarea id="post-excerpt" rows="2" placeholder="A short summary..."></textarea>
-        </div>
-        <div class="field">
-            <label>content</label>
-            <div id="editor"></div>
-        </div>
-        <div class="editor-actions">
-            <button class="btn" id="publish-btn" onclick="handlePublish()">publish</button>
-            <button class="btn btn-secondary" onclick="handleSaveDraft()">save draft</button>
-            <span class="status" id="status-msg"></span>
+
+        <!-- Edit About Tab -->
+        <div class="tab-content" id="tab-about">
+            <div class="field">
+                <label>about me content</label>
+                <div id="editor-about"></div>
+            </div>
+            <div class="editor-actions">
+                <button class="btn" id="save-about-btn" onclick="handleSaveAbout()">save about</button>
+                <span class="status" id="about-status-msg"></span>
+            </div>
         </div>
     </div>
 
@@ -258,13 +301,42 @@ permalink: /admin/
 
     <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
     <script>
-        let quill;
+        let quillEssay;
+        let quillAbout;
+        let activeQuill;
         let adminPassword = '';
         let imageInsertIndex = 0;
+        let aboutSha = '';
+        let aboutLoaded = false;
+        let currentTab = 'essay';
+
+        var toolbarOptions = {
+            container: [
+                [{ 'header': [2, 3, false] }],
+                ['bold', 'italic', 'underline', 'strike'],
+                ['blockquote', 'code-block'],
+                [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                [{ 'indent': '-1' }, { 'indent': '+1' }],
+                ['link', 'image'],
+                [{ 'align': [] }],
+                [{ 'color': [] }, { 'background': [] }],
+                [{ 'font': [] }],
+                [{ 'size': ['small', false, 'large', 'huge'] }],
+                ['clean']
+            ],
+            handlers: {
+                image: function () {
+                    activeQuill = currentTab === 'essay' ? quillEssay : quillAbout;
+                    var range = activeQuill.getSelection(true);
+                    imageInsertIndex = range ? range.index : activeQuill.getLength();
+                    document.getElementById('image-overlay').classList.add('active');
+                }
+            }
+        };
 
         // Theme
         function toggleTheme() {
-            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
             if (isDark) { document.documentElement.removeAttribute('data-theme'); localStorage.setItem('theme', 'light'); }
             else { document.documentElement.setAttribute('data-theme', 'dark'); localStorage.setItem('theme', 'dark'); }
         }
@@ -272,98 +344,170 @@ permalink: /admin/
         // Set today's date
         document.getElementById('post-date').value = new Date().toISOString().split('T')[0];
 
+        // Tabs
+        function switchTab(tab) {
+            currentTab = tab;
+            document.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('active'); });
+            document.querySelectorAll('.tab-content').forEach(function(t) { t.classList.remove('active'); });
+            if (tab === 'essay') {
+                document.querySelectorAll('.tab')[0].classList.add('active');
+                document.getElementById('tab-essay').classList.add('active');
+            } else {
+                document.querySelectorAll('.tab')[1].classList.add('active');
+                document.getElementById('tab-about').classList.add('active');
+                if (!aboutLoaded) loadAboutContent();
+            }
+        }
+
         // Login
         async function handleLogin(e) {
             e.preventDefault();
-            const pw = document.getElementById('password-input').value;
-            const errorEl = document.getElementById('login-error');
+            var pw = document.getElementById('password-input').value;
+            var errorEl = document.getElementById('login-error');
             errorEl.textContent = '';
 
             try {
-                const res = await fetch('/api/login', {
+                var res = await fetch('/api/login', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ password: pw })
                 });
-                if (res.ok) {
+                var data = await res.json().catch(function() { return {}; });
+                if (res.ok && data.ok) {
                     adminPassword = pw;
                     document.getElementById('login-screen').style.display = 'none';
                     document.getElementById('editor-screen').style.display = 'block';
-                    initEditor();
+                    initEditors();
                 } else {
-                    errorEl.textContent = 'wrong password';
+                    errorEl.textContent = 'wrong password (status: ' + res.status + ')';
                 }
             } catch (err) {
-                errorEl.textContent = 'connection error';
+                errorEl.textContent = 'connection error: ' + err.message;
             }
         }
 
-        // Editor
-        function initEditor() {
-            quill = new Quill('#editor', {
+        // Editors
+        function initEditors() {
+            quillEssay = new Quill('#editor-essay', {
                 theme: 'snow',
-                placeholder: 'Start writing...',
-                modules: {
-                    toolbar: {
-                        container: [
-                            [{ 'header': [2, 3, false] }],
-                            ['bold', 'italic', 'underline', 'strike'],
-                            ['blockquote', 'code-block'],
-                            [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-                            [{ 'indent': '-1' }, { 'indent': '+1' }],
-                            ['link', 'image'],
-                            [{ 'align': [] }],
-                            [{ 'color': [] }, { 'background': [] }],
-                            [{ 'font': [] }],
-                            [{ 'size': ['small', false, 'large', 'huge'] }],
-                            ['clean']
-                        ],
-                        handlers: {
-                            image: function () {
-                                const range = quill.getSelection(true);
-                                imageInsertIndex = range ? range.index : quill.getLength();
-                                document.getElementById('image-overlay').classList.add('active');
-                            }
-                        }
-                    }
-                }
+                placeholder: 'Start writing your essay...',
+                modules: { toolbar: toolbarOptions }
             });
+
+            quillAbout = new Quill('#editor-about', {
+                theme: 'snow',
+                placeholder: 'Write about yourself...',
+                modules: { toolbar: toolbarOptions }
+            });
+
+            activeQuill = quillEssay;
+        }
+
+        // Load about content
+        async function loadAboutContent() {
+            var statusEl = document.getElementById('about-status-msg');
+            statusEl.textContent = 'loading...';
+            statusEl.className = 'status';
+
+            try {
+                var res = await fetch('/api/about', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ password: adminPassword, action: 'get' })
+                });
+                var data = await res.json();
+                if (res.ok && data.ok) {
+                    quillAbout.root.innerHTML = data.content;
+                    aboutSha = data.sha;
+                    aboutLoaded = true;
+                    statusEl.textContent = '';
+                } else {
+                    statusEl.textContent = data.error || 'failed to load';
+                    statusEl.className = 'status error';
+                }
+            } catch (err) {
+                statusEl.textContent = 'failed to load: ' + err.message;
+                statusEl.className = 'status error';
+            }
+        }
+
+        // Save about
+        async function handleSaveAbout() {
+            var content = quillAbout.root.innerHTML;
+            var statusEl = document.getElementById('about-status-msg');
+            var btn = document.getElementById('save-about-btn');
+
+            if (!content || content === '<p><br></p>') {
+                statusEl.textContent = 'content is required';
+                statusEl.className = 'status error';
+                return;
+            }
+
+            btn.disabled = true;
+            statusEl.textContent = 'saving...';
+            statusEl.className = 'status';
+
+            try {
+                var res = await fetch('/api/about', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        password: adminPassword,
+                        action: 'update',
+                        content: content,
+                        sha: aboutSha
+                    })
+                });
+                var data = await res.json();
+                if (res.ok && data.ok) {
+                    statusEl.textContent = 'saved - site will rebuild in ~30s';
+                    statusEl.className = 'status success';
+                    aboutLoaded = false; // Reload sha on next visit
+                } else {
+                    statusEl.textContent = data.error || 'failed to save';
+                    statusEl.className = 'status error';
+                }
+            } catch (err) {
+                statusEl.textContent = 'connection error';
+                statusEl.className = 'status error';
+            }
+            btn.disabled = false;
         }
 
         // Image upload
-        const dropZone = document.getElementById('drop-zone');
-        const fileInput = document.getElementById('file-input');
+        var dropZone = document.getElementById('drop-zone');
+        var fileInput = document.getElementById('file-input');
 
-        dropZone.addEventListener('click', () => fileInput.click());
-        dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.classList.add('dragover'); });
-        dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
-        dropZone.addEventListener('drop', (e) => {
+        dropZone.addEventListener('click', function() { fileInput.click(); });
+        dropZone.addEventListener('dragover', function(e) { e.preventDefault(); dropZone.classList.add('dragover'); });
+        dropZone.addEventListener('dragleave', function() { dropZone.classList.remove('dragover'); });
+        dropZone.addEventListener('drop', function(e) {
             e.preventDefault();
             dropZone.classList.remove('dragover');
             if (e.dataTransfer.files.length) handleFileUpload(e.dataTransfer.files[0]);
         });
-        fileInput.addEventListener('change', () => {
+        fileInput.addEventListener('change', function() {
             if (fileInput.files.length) handleFileUpload(fileInput.files[0]);
         });
 
         async function handleFileUpload(file) {
-            const statusEl = document.getElementById('upload-status');
+            var statusEl = document.getElementById('upload-status');
             statusEl.textContent = 'uploading...';
             statusEl.className = 'status';
 
-            const reader = new FileReader();
+            var reader = new FileReader();
             reader.onload = async function () {
-                const base64 = reader.result.split(',')[1];
-                const ext = file.name.split('.').pop();
-                const filename = Date.now() + '.' + ext;
+                var base64 = reader.result.split(',')[1];
+                var ext = file.name.split('.').pop();
+                var filename = Date.now() + '.' + ext;
 
                 try {
-                    const res = await fetch('/api/upload-image', {
+                    var res = await fetch('/api/upload-image', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ password: adminPassword, filename, content: base64 })
+                        body: JSON.stringify({ password: adminPassword, filename: filename, content: base64 })
                     });
-                    const data = await res.json();
+                    var data = await res.json();
                     if (res.ok) {
                         document.getElementById('image-url-input').value = data.url;
                         statusEl.textContent = 'uploaded - click insert';
@@ -381,10 +525,10 @@ permalink: /admin/
         }
 
         function insertImage() {
-            const url = document.getElementById('image-url-input').value.trim();
+            var url = document.getElementById('image-url-input').value.trim();
             if (!url) return;
-            quill.insertEmbed(imageInsertIndex, 'image', url);
-            quill.setSelection(imageInsertIndex + 1);
+            activeQuill.insertEmbed(imageInsertIndex, 'image', url);
+            activeQuill.setSelection(imageInsertIndex + 1);
             closeImageOverlay();
         }
 
@@ -395,7 +539,7 @@ permalink: /admin/
             fileInput.value = '';
         }
 
-        // Publish
+        // Publish essay
         async function handlePublish() {
             await savePost(false);
         }
@@ -405,12 +549,12 @@ permalink: /admin/
         }
 
         async function savePost(isDraft) {
-            const title = document.getElementById('post-title').value.trim();
-            const date = document.getElementById('post-date').value;
-            const excerpt = document.getElementById('post-excerpt').value.trim();
-            const content = quill.root.innerHTML;
-            const statusEl = document.getElementById('status-msg');
-            const publishBtn = document.getElementById('publish-btn');
+            var title = document.getElementById('post-title').value.trim();
+            var date = document.getElementById('post-date').value;
+            var excerpt = document.getElementById('post-excerpt').value.trim();
+            var content = quillEssay.root.innerHTML;
+            var statusEl = document.getElementById('status-msg');
+            var publishBtn = document.getElementById('publish-btn');
 
             if (!title) { statusEl.textContent = 'title is required'; statusEl.className = 'status error'; return; }
             if (!date) { statusEl.textContent = 'date is required'; statusEl.className = 'status error'; return; }
@@ -421,25 +565,24 @@ permalink: /admin/
             statusEl.className = 'status';
 
             try {
-                const res = await fetch('/api/publish', {
+                var res = await fetch('/api/publish', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         password: adminPassword,
-                        title, date, excerpt, content,
+                        title: title, date: date, excerpt: excerpt, content: content,
                         draft: isDraft
                     })
                 });
-                const data = await res.json();
+                var data = await res.json();
                 if (res.ok) {
                     statusEl.textContent = isDraft ? 'draft saved' : 'published - site will rebuild in ~30s';
                     statusEl.className = 'status success';
                     if (!isDraft) {
-                        // Clear form after successful publish
-                        setTimeout(() => {
+                        setTimeout(function() {
                             document.getElementById('post-title').value = '';
                             document.getElementById('post-excerpt').value = '';
-                            quill.setContents([]);
+                            quillEssay.setContents([]);
                             statusEl.textContent = '';
                         }, 5000);
                     }
@@ -455,7 +598,7 @@ permalink: /admin/
         }
 
         // Close overlay on escape
-        document.addEventListener('keydown', (e) => {
+        document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') closeImageOverlay();
         });
     </script>
