@@ -1,21 +1,16 @@
 <footer class="site-footer">
     <div class="wrapper footer-content">
         <div class="footer-left">
-            RSS feed available&nbsp;
-            {%- if site.rss_feed -%}
-            <a href="{{ site.rss_feed }}">here</a>
-            {%- else -%}
-            <a href="/feed.xml">here</a>
-            {%- endif -%}
+            <svg class="footer-doodle doodle" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="doodle-draw" d="M12 2 C14 8, 8 8, 12 14 C16 8, 10 8, 12 2" /><circle cx="8" cy="11" r="1.5" /><circle cx="16" cy="11" r="1.5" /><circle cx="12" cy="17" r="1.5" /><circle cx="12" cy="7" r="1.5" /></svg>
+            <a href="/feed.xml">rss</a>
         </div>
 
         <div class="footer-right">
-            Follow me at&nbsp;
             {%- if site.twitter_username -%}
-            <a href="https://x.com/{{ site.twitter_username }}" target="_blank" rel="noopener">X</a>
+            <a href="https://x.com/{{ site.twitter_username }}" target="_blank" rel="noopener">x</a>
             {%- endif -%}
             {%- if site.linkedin_username -%}
-            <a href="https://linkedin.com/in/{{ site.linkedin_username }}" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://linkedin.com/in/{{ site.linkedin_username }}" target="_blank" rel="noopener">linkedin</a>
             {%- endif -%}
         </div>
     </div>

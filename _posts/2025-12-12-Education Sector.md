@@ -295,9 +295,4 @@ And that’s why the bar is higher here:
 If you want to build something meaningful in this space, you can’t just build for engagement.  
 You have to build for **trust, incentives, and real-world constraints** - across all four stakeholders.
 
-![[Screenshot 2026-02-16 at 5.36.26 PM.png]]
-
-![[Screenshot 2026-02-16 at 5.37.04 PM.png]]
-—
-
-*New posts coming regularly. Subscribe to the RSS feed or check back here.*
+---
