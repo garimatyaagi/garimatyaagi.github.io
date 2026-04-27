@@ -33,3 +33,4 @@ exclude:
   - .gitignore
   - vercel.json
   - .context
+  - api

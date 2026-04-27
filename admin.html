@@ -1,0 +1,463 @@
+---
+layout: null
+permalink: /admin/
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <title>admin - Letters by G</title>
+    <script>if (localStorage.getItem('theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark');</script>
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #111111;
+            --text-secondary: #555555;
+            --text-muted: #888888;
+            --border: #dddddd;
+            --border-subtle: #f0f0f0;
+            --surface: #fafafa;
+            --nav-bg: rgba(255, 255, 255, 0.85);
+        }
+        [data-theme="dark"] {
+            --bg: #1a1814;
+            --text: #e0ddd8;
+            --text-secondary: #9a9590;
+            --text-muted: #5e5a55;
+            --border: #2c2924;
+            --border-subtle: #241f1a;
+            --surface: #221e19;
+            --nav-bg: rgba(26, 24, 20, 0.85);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'IBM Plex Mono', monospace;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .admin-header {
+            position: sticky; top: 0; z-index: 50;
+            background: var(--nav-bg);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 1rem 2rem;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .admin-header a {
+            font-size: 0.88rem; font-weight: 600; color: var(--text);
+            text-decoration: none; letter-spacing: 0.02em;
+        }
+        .admin-header .right { display: flex; gap: 1rem; align-items: center; }
+        .admin-header .right span { font-size: 0.72rem; color: var(--text-muted); }
+        .theme-toggle {
+            width: 28px; height: 28px; border-radius: 50%;
+            border: 1px solid var(--border); background: transparent;
+            color: var(--text-secondary); cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .theme-toggle:hover { border-color: var(--text); color: var(--text); }
+
+        /* Login */
+        #login-screen {
+            max-width: 320px; margin: 15vh auto; padding: 0 2rem; text-align: center;
+        }
+        #login-screen h1 {
+            font-size: 1.1rem; font-weight: 600; margin-bottom: 2rem;
+        }
+        #login-screen input {
+            width: 100%; padding: 0.7rem 1rem;
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            background: var(--bg); color: var(--text);
+            border: 1px solid var(--border); border-radius: 2px;
+            margin-bottom: 1rem; outline: none;
+        }
+        #login-screen input:focus { border-color: var(--text); }
+        .btn {
+            display: inline-block; padding: 0.6rem 1.5rem;
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.78rem; font-weight: 600;
+            background: var(--text); color: var(--bg);
+            border: 1px solid var(--text); border-radius: 2px;
+            cursor: pointer; transition: all 0.2s;
+        }
+        .btn:hover { background: transparent; color: var(--text); }
+        .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+        .btn-secondary {
+            background: transparent; color: var(--text);
+        }
+        .btn-secondary:hover { background: var(--text); color: var(--bg); }
+        .error { color: #c44; font-size: 0.75rem; margin-top: 0.5rem; }
+
+        /* Editor */
+        #editor-screen { display: none; max-width: 780px; margin: 0 auto; padding: 2rem; }
+        .field { margin-bottom: 1.5rem; }
+        .field label {
+            display: block; font-size: 0.72rem; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 0.08em;
+            color: var(--text-muted); margin-bottom: 0.4rem;
+        }
+        .field input, .field textarea {
+            width: 100%; padding: 0.6rem 0.8rem;
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.9rem;
+            background: var(--bg); color: var(--text);
+            border: 1px solid var(--border); border-radius: 2px; outline: none;
+        }
+        .field input:focus, .field textarea:focus { border-color: var(--text); }
+        .field textarea { resize: vertical; min-height: 60px; }
+
+        /* Quill overrides */
+        .ql-toolbar.ql-snow {
+            border: 1px solid var(--border) !important;
+            border-radius: 2px 2px 0 0;
+            background: var(--surface);
+            font-family: 'IBM Plex Mono', monospace !important;
+        }
+        .ql-container.ql-snow {
+            border: 1px solid var(--border) !important;
+            border-top: none !important;
+            border-radius: 0 0 2px 2px;
+            font-family: 'IBM Plex Mono', monospace !important;
+            font-size: 0.95rem;
+            min-height: 400px;
+            background: var(--bg);
+        }
+        .ql-editor {
+            min-height: 400px;
+            color: var(--text);
+            line-height: 1.85;
+        }
+        .ql-editor.ql-blank::before {
+            color: var(--text-muted) !important;
+            font-style: normal !important;
+        }
+        .ql-snow .ql-stroke { stroke: var(--text-secondary) !important; }
+        .ql-snow .ql-fill { fill: var(--text-secondary) !important; }
+        .ql-snow .ql-picker-label { color: var(--text-secondary) !important; }
+        .ql-snow .ql-picker-options {
+            background: var(--bg) !important;
+            border-color: var(--border) !important;
+        }
+        .ql-snow .ql-picker-item { color: var(--text) !important; }
+        .ql-snow .ql-active .ql-stroke { stroke: var(--text) !important; }
+        .ql-snow .ql-active .ql-fill { fill: var(--text) !important; }
+        .ql-toolbar button:hover .ql-stroke { stroke: var(--text) !important; }
+        .ql-toolbar button:hover .ql-fill { fill: var(--text) !important; }
+
+        .editor-actions {
+            margin-top: 1.5rem;
+            display: flex; gap: 1rem; align-items: center;
+        }
+        .status {
+            font-size: 0.75rem; color: var(--text-muted);
+            margin-left: auto;
+        }
+        .status.success { color: #4a8; }
+        .status.error { color: #c44; }
+
+        /* Image upload overlay */
+        .image-upload-overlay {
+            display: none; position: fixed; inset: 0; z-index: 100;
+            background: rgba(0,0,0,0.5); backdrop-filter: blur(4px);
+            align-items: center; justify-content: center;
+        }
+        .image-upload-overlay.active { display: flex; }
+        .image-upload-box {
+            background: var(--bg); border: 1px solid var(--border);
+            padding: 2rem; border-radius: 4px; max-width: 400px; width: 90%;
+            text-align: center;
+        }
+        .image-upload-box h3 {
+            font-size: 0.88rem; font-weight: 600; margin-bottom: 1rem;
+        }
+        .drop-zone {
+            border: 2px dashed var(--border); border-radius: 4px;
+            padding: 2rem; margin-bottom: 1rem; cursor: pointer;
+            transition: border-color 0.2s;
+        }
+        .drop-zone:hover, .drop-zone.dragover { border-color: var(--text); }
+        .drop-zone p { font-size: 0.78rem; color: var(--text-muted); }
+        .image-upload-box .or { font-size: 0.72rem; color: var(--text-muted); margin: 0.5rem 0; }
+        .image-url-input {
+            width: 100%; padding: 0.5rem 0.8rem; margin-bottom: 1rem;
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem;
+            background: var(--bg); color: var(--text);
+            border: 1px solid var(--border); border-radius: 2px; outline: none;
+        }
+        .upload-actions { display: flex; gap: 0.5rem; justify-content: center; }
+    </style>
+</head>
+<body>
+    <div class="admin-header">
+        <a href="/">letters by g</a>
+        <div class="right">
+            <span>admin</span>
+            <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Login -->
+    <div id="login-screen">
+        <h1>admin</h1>
+        <form onsubmit="handleLogin(event)">
+            <input type="password" id="password-input" placeholder="password" autofocus>
+            <br>
+            <button type="submit" class="btn">enter</button>
+            <div id="login-error" class="error"></div>
+        </form>
+    </div>
+
+    <!-- Editor -->
+    <div id="editor-screen">
+        <div class="field">
+            <label>title</label>
+            <input type="text" id="post-title" placeholder="The title of your essay">
+        </div>
+        <div class="field">
+            <label>date</label>
+            <input type="date" id="post-date">
+        </div>
+        <div class="field">
+            <label>excerpt (optional - shows on essays list)</label>
+            <textarea id="post-excerpt" rows="2" placeholder="A short summary..."></textarea>
+        </div>
+        <div class="field">
+            <label>content</label>
+            <div id="editor"></div>
+        </div>
+        <div class="editor-actions">
+            <button class="btn" id="publish-btn" onclick="handlePublish()">publish</button>
+            <button class="btn btn-secondary" onclick="handleSaveDraft()">save draft</button>
+            <span class="status" id="status-msg"></span>
+        </div>
+    </div>
+
+    <!-- Image upload overlay -->
+    <div class="image-upload-overlay" id="image-overlay">
+        <div class="image-upload-box">
+            <h3>insert image</h3>
+            <div class="drop-zone" id="drop-zone">
+                <p>drop an image here or click to select</p>
+                <input type="file" id="file-input" accept="image/*" style="display:none">
+            </div>
+            <div class="or">or paste a URL</div>
+            <input type="text" class="image-url-input" id="image-url-input" placeholder="https://...">
+            <div class="upload-actions">
+                <button class="btn" id="insert-image-btn" onclick="insertImage()">insert</button>
+                <button class="btn btn-secondary" onclick="closeImageOverlay()">cancel</button>
+            </div>
+            <div id="upload-status" class="status" style="margin-top:0.5rem"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+    <script>
+        let quill;
+        let adminPassword = '';
+        let imageInsertIndex = 0;
+
+        // Theme
+        function toggleTheme() {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            if (isDark) { document.documentElement.removeAttribute('data-theme'); localStorage.setItem('theme', 'light'); }
+            else { document.documentElement.setAttribute('data-theme', 'dark'); localStorage.setItem('theme', 'dark'); }
+        }
+
+        // Set today's date
+        document.getElementById('post-date').value = new Date().toISOString().split('T')[0];
+
+        // Login
+        async function handleLogin(e) {
+            e.preventDefault();
+            const pw = document.getElementById('password-input').value;
+            const errorEl = document.getElementById('login-error');
+            errorEl.textContent = '';
+
+            try {
+                const res = await fetch('/api/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ password: pw })
+                });
+                if (res.ok) {
+                    adminPassword = pw;
+                    document.getElementById('login-screen').style.display = 'none';
+                    document.getElementById('editor-screen').style.display = 'block';
+                    initEditor();
+                } else {
+                    errorEl.textContent = 'wrong password';
+                }
+            } catch (err) {
+                errorEl.textContent = 'connection error';
+            }
+        }
+
+        // Editor
+        function initEditor() {
+            quill = new Quill('#editor', {
+                theme: 'snow',
+                placeholder: 'Start writing...',
+                modules: {
+                    toolbar: {
+                        container: [
+                            [{ 'header': [2, 3, false] }],
+                            ['bold', 'italic', 'underline', 'strike'],
+                            ['blockquote', 'code-block'],
+                            [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                            [{ 'indent': '-1' }, { 'indent': '+1' }],
+                            ['link', 'image'],
+                            [{ 'align': [] }],
+                            [{ 'color': [] }, { 'background': [] }],
+                            [{ 'font': [] }],
+                            [{ 'size': ['small', false, 'large', 'huge'] }],
+                            ['clean']
+                        ],
+                        handlers: {
+                            image: function () {
+                                const range = quill.getSelection(true);
+                                imageInsertIndex = range ? range.index : quill.getLength();
+                                document.getElementById('image-overlay').classList.add('active');
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Image upload
+        const dropZone = document.getElementById('drop-zone');
+        const fileInput = document.getElementById('file-input');
+
+        dropZone.addEventListener('click', () => fileInput.click());
+        dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.classList.add('dragover'); });
+        dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('dragover');
+            if (e.dataTransfer.files.length) handleFileUpload(e.dataTransfer.files[0]);
+        });
+        fileInput.addEventListener('change', () => {
+            if (fileInput.files.length) handleFileUpload(fileInput.files[0]);
+        });
+
+        async function handleFileUpload(file) {
+            const statusEl = document.getElementById('upload-status');
+            statusEl.textContent = 'uploading...';
+            statusEl.className = 'status';
+
+            const reader = new FileReader();
+            reader.onload = async function () {
+                const base64 = reader.result.split(',')[1];
+                const ext = file.name.split('.').pop();
+                const filename = Date.now() + '.' + ext;
+
+                try {
+                    const res = await fetch('/api/upload-image', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ password: adminPassword, filename, content: base64 })
+                    });
+                    const data = await res.json();
+                    if (res.ok) {
+                        document.getElementById('image-url-input').value = data.url;
+                        statusEl.textContent = 'uploaded - click insert';
+                        statusEl.className = 'status success';
+                    } else {
+                        statusEl.textContent = data.error || 'upload failed';
+                        statusEl.className = 'status error';
+                    }
+                } catch (err) {
+                    statusEl.textContent = 'upload failed';
+                    statusEl.className = 'status error';
+                }
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function insertImage() {
+            const url = document.getElementById('image-url-input').value.trim();
+            if (!url) return;
+            quill.insertEmbed(imageInsertIndex, 'image', url);
+            quill.setSelection(imageInsertIndex + 1);
+            closeImageOverlay();
+        }
+
+        function closeImageOverlay() {
+            document.getElementById('image-overlay').classList.remove('active');
+            document.getElementById('image-url-input').value = '';
+            document.getElementById('upload-status').textContent = '';
+            fileInput.value = '';
+        }
+
+        // Publish
+        async function handlePublish() {
+            await savePost(false);
+        }
+
+        async function handleSaveDraft() {
+            await savePost(true);
+        }
+
+        async function savePost(isDraft) {
+            const title = document.getElementById('post-title').value.trim();
+            const date = document.getElementById('post-date').value;
+            const excerpt = document.getElementById('post-excerpt').value.trim();
+            const content = quill.root.innerHTML;
+            const statusEl = document.getElementById('status-msg');
+            const publishBtn = document.getElementById('publish-btn');
+
+            if (!title) { statusEl.textContent = 'title is required'; statusEl.className = 'status error'; return; }
+            if (!date) { statusEl.textContent = 'date is required'; statusEl.className = 'status error'; return; }
+            if (!content || content === '<p><br></p>') { statusEl.textContent = 'content is required'; statusEl.className = 'status error'; return; }
+
+            publishBtn.disabled = true;
+            statusEl.textContent = 'publishing...';
+            statusEl.className = 'status';
+
+            try {
+                const res = await fetch('/api/publish', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        password: adminPassword,
+                        title, date, excerpt, content,
+                        draft: isDraft
+                    })
+                });
+                const data = await res.json();
+                if (res.ok) {
+                    statusEl.textContent = isDraft ? 'draft saved' : 'published - site will rebuild in ~30s';
+                    statusEl.className = 'status success';
+                    if (!isDraft) {
+                        // Clear form after successful publish
+                        setTimeout(() => {
+                            document.getElementById('post-title').value = '';
+                            document.getElementById('post-excerpt').value = '';
+                            quill.setContents([]);
+                            statusEl.textContent = '';
+                        }, 5000);
+                    }
+                } else {
+                    statusEl.textContent = data.error || 'failed to publish';
+                    statusEl.className = 'status error';
+                }
+            } catch (err) {
+                statusEl.textContent = 'connection error';
+                statusEl.className = 'status error';
+            }
+            publishBtn.disabled = false;
+        }
+
+        // Close overlay on escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeImageOverlay();
+        });
+    </script>
+</body>
+</html>

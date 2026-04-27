@@ -1,5 +1,5 @@
 {
-  "buildCommand": "jekyll build",
+  "buildCommand": "gem install jekyll jekyll-feed jekyll-sitemap jekyll-seo-tag && jekyll build",
   "outputDirectory": "_site",
-  "installCommand": "gem install jekyll jekyll-feed jekyll-sitemap jekyll-seo-tag"
+  "framework": null
 }
