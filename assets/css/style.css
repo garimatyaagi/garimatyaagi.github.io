@@ -362,6 +362,45 @@ a {
     font-weight: 500;
 }
 
+/* ─── Tags ─── */
+.post-tags {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+}
+
+.post-tag {
+    font-size: 0.68rem;
+    padding: 0.15rem 0.5rem;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.essay-tags {
+    display: flex;
+    gap: 0.3rem;
+    flex-wrap: wrap;
+}
+
+.essay-tag {
+    font-size: 0.6rem;
+    padding: 0.1rem 0.4rem;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    color: var(--text-muted);
+}
+
+/* ─── Post images ─── */
+.post-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 2px;
+    margin: 0.5rem 0;
+}
+
 /* ─── Post page ─── */
 .post {
     padding-top: 0.5rem;

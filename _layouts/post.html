@@ -16,6 +16,13 @@ layout: default
             &middot; ~{{ minutes }} min
             {%- endif -%}
         </p>
+        {%- if page.tags.size > 0 -%}
+        <div class="post-tags">
+            {%- for tag in page.tags -%}
+            <span class="post-tag">{{ tag }}</span>
+            {%- endfor -%}
+        </div>
+        {%- endif -%}
     </header>
 
     <div class="post-content">

@@ -46,8 +46,11 @@ export default async function handler(req, res) {
             return res.status(500).json({ error: 'Failed to upload', details: error.message });
         }
 
-        const url = `/assets/uploads/${filename}`;
-        return res.status(200).json({ ok: true, url });
+        // Return both URLs: raw GitHub (works immediately) and relative (works after rebuild)
+        const rawUrl = `https://raw.githubusercontent.com/${repo}/main/${filePath}`;
+        const relativeUrl = `/${filePath}`;
+
+        return res.status(200).json({ ok: true, url: rawUrl, relativeUrl: relativeUrl });
     } catch (err) {
         return res.status(400).json({ error: 'Invalid request', details: err.message });
     }

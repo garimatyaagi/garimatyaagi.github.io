@@ -14,204 +14,118 @@ permalink: /admin/
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #ffffff;
-            --text: #111111;
-            --text-secondary: #555555;
-            --text-muted: #888888;
-            --border: #dddddd;
-            --border-subtle: #f0f0f0;
-            --surface: #fafafa;
-            --nav-bg: rgba(255, 255, 255, 0.85);
+            --bg: #ffffff; --text: #111111; --text-secondary: #555555;
+            --text-muted: #888888; --border: #dddddd; --border-subtle: #f0f0f0;
+            --surface: #fafafa; --nav-bg: rgba(255, 255, 255, 0.85);
         }
         [data-theme="dark"] {
-            --bg: #1a1814;
-            --text: #e0ddd8;
-            --text-secondary: #9a9590;
-            --text-muted: #5e5a55;
-            --border: #2c2924;
-            --border-subtle: #241f1a;
-            --surface: #221e19;
-            --nav-bg: rgba(26, 24, 20, 0.85);
+            --bg: #1a1814; --text: #e0ddd8; --text-secondary: #9a9590;
+            --text-muted: #5e5a55; --border: #2c2924; --border-subtle: #241f1a;
+            --surface: #221e19; --nav-bg: rgba(26, 24, 20, 0.85);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'IBM Plex Mono', monospace;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            transition: background-color 0.3s, color 0.3s;
-        }
-        .admin-header {
-            position: sticky; top: 0; z-index: 50;
-            background: var(--nav-bg);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border-subtle);
-            padding: 1rem 2rem;
-            display: flex; align-items: center; justify-content: space-between;
-        }
-        .admin-header a {
-            font-size: 0.88rem; font-weight: 600; color: var(--text);
-            text-decoration: none; letter-spacing: 0.02em;
-        }
+        body { font-family: 'IBM Plex Mono', monospace; background: var(--bg); color: var(--text); line-height: 1.6; transition: background-color 0.3s, color 0.3s; }
+
+        /* Header */
+        .admin-header { position: sticky; top: 0; z-index: 50; background: var(--nav-bg); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-subtle); padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; }
+        .admin-header a { font-size: 0.88rem; font-weight: 600; color: var(--text); text-decoration: none; letter-spacing: 0.02em; }
         .admin-header .right { display: flex; gap: 1rem; align-items: center; }
         .admin-header .right span { font-size: 0.72rem; color: var(--text-muted); }
-        .theme-toggle {
-            width: 28px; height: 28px; border-radius: 50%;
-            border: 1px solid var(--border); background: transparent;
-            color: var(--text-secondary); cursor: pointer;
-            display: flex; align-items: center; justify-content: center;
-        }
+        .theme-toggle { width: 28px; height: 28px; border-radius: 50%; border: 1px solid var(--border); background: transparent; color: var(--text-secondary); cursor: pointer; display: flex; align-items: center; justify-content: center; }
         .theme-toggle:hover { border-color: var(--text); color: var(--text); }
 
         /* Login */
-        #login-screen {
-            max-width: 320px; margin: 15vh auto; padding: 0 2rem; text-align: center;
-        }
-        #login-screen h1 {
-            font-size: 1.1rem; font-weight: 600; margin-bottom: 2rem;
-        }
-        #login-screen input {
-            width: 100%; padding: 0.7rem 1rem;
-            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
-            background: var(--bg); color: var(--text);
-            border: 1px solid var(--border); border-radius: 2px;
-            margin-bottom: 1rem; outline: none;
-        }
+        #login-screen { max-width: 320px; margin: 15vh auto; padding: 0 2rem; text-align: center; }
+        #login-screen h1 { font-size: 1.1rem; font-weight: 600; margin-bottom: 2rem; }
+        #login-screen input { width: 100%; padding: 0.7rem 1rem; font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; background: var(--bg); color: var(--text); border: 1px solid var(--border); border-radius: 2px; margin-bottom: 1rem; outline: none; }
         #login-screen input:focus { border-color: var(--text); }
-        .btn {
-            display: inline-block; padding: 0.6rem 1.5rem;
-            font-family: 'IBM Plex Mono', monospace; font-size: 0.78rem; font-weight: 600;
-            background: var(--text); color: var(--bg);
-            border: 1px solid var(--text); border-radius: 2px;
-            cursor: pointer; transition: all 0.2s;
-        }
+
+        /* Buttons */
+        .btn { display: inline-block; padding: 0.6rem 1.5rem; font-family: 'IBM Plex Mono', monospace; font-size: 0.78rem; font-weight: 600; background: var(--text); color: var(--bg); border: 1px solid var(--text); border-radius: 2px; cursor: pointer; transition: all 0.2s; }
         .btn:hover { background: transparent; color: var(--text); }
         .btn:disabled { opacity: 0.4; cursor: not-allowed; }
-        .btn-secondary {
-            background: transparent; color: var(--text);
-        }
+        .btn-secondary { background: transparent; color: var(--text); }
         .btn-secondary:hover { background: var(--text); color: var(--bg); }
+        .btn-small { padding: 0.3rem 0.8rem; font-size: 0.7rem; }
         .error { color: #c44; font-size: 0.75rem; margin-top: 0.5rem; }
 
         /* Tabs */
-        .tabs {
-            display: flex; gap: 0; border-bottom: 1px solid var(--border);
-            margin-bottom: 2rem;
-        }
-        .tab {
-            padding: 0.7rem 1.5rem;
-            font-family: 'IBM Plex Mono', monospace; font-size: 0.78rem; font-weight: 500;
-            background: transparent; color: var(--text-muted);
-            border: none; border-bottom: 2px solid transparent;
-            cursor: pointer; transition: all 0.2s;
-            margin-bottom: -1px;
-        }
+        .tabs { display: flex; gap: 0; border-bottom: 1px solid var(--border); margin-bottom: 2rem; flex-wrap: wrap; }
+        .tab { padding: 0.7rem 1.2rem; font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; font-weight: 500; background: transparent; color: var(--text-muted); border: none; border-bottom: 2px solid transparent; cursor: pointer; transition: all 0.2s; margin-bottom: -1px; }
         .tab:hover { color: var(--text); }
-        .tab.active {
-            color: var(--text); border-bottom-color: var(--text); font-weight: 600;
-        }
+        .tab.active { color: var(--text); border-bottom-color: var(--text); font-weight: 600; }
         .tab-content { display: none; }
         .tab-content.active { display: block; }
 
         /* Editor */
         #editor-screen { display: none; max-width: 780px; margin: 0 auto; padding: 2rem; }
         .field { margin-bottom: 1.5rem; }
-        .field label {
-            display: block; font-size: 0.72rem; font-weight: 600;
-            text-transform: uppercase; letter-spacing: 0.08em;
-            color: var(--text-muted); margin-bottom: 0.4rem;
-        }
-        .field input, .field textarea {
-            width: 100%; padding: 0.6rem 0.8rem;
-            font-family: 'IBM Plex Mono', monospace; font-size: 0.9rem;
-            background: var(--bg); color: var(--text);
-            border: 1px solid var(--border); border-radius: 2px; outline: none;
-        }
+        .field label { display: block; font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 0.4rem; }
+        .field input, .field textarea { width: 100%; padding: 0.6rem 0.8rem; font-family: 'IBM Plex Mono', monospace; font-size: 0.9rem; background: var(--bg); color: var(--text); border: 1px solid var(--border); border-radius: 2px; outline: none; }
         .field input:focus, .field textarea:focus { border-color: var(--text); }
         .field textarea { resize: vertical; min-height: 60px; }
 
-        /* Quill overrides */
-        .ql-toolbar.ql-snow {
-            border: 1px solid var(--border) !important;
-            border-radius: 2px 2px 0 0;
-            background: var(--surface);
-            font-family: 'IBM Plex Mono', monospace !important;
-        }
-        .ql-container.ql-snow {
-            border: 1px solid var(--border) !important;
-            border-top: none !important;
-            border-radius: 0 0 2px 2px;
-            font-family: 'IBM Plex Mono', monospace !important;
-            font-size: 0.95rem;
-            min-height: 400px;
-            background: var(--bg);
-        }
-        .ql-editor {
-            min-height: 400px;
-            color: var(--text);
-            line-height: 1.85;
-        }
-        .ql-editor.ql-blank::before {
-            color: var(--text-muted) !important;
-            font-style: normal !important;
-        }
+        /* Quill */
+        .ql-toolbar.ql-snow { border: 1px solid var(--border) !important; border-radius: 2px 2px 0 0; background: var(--surface); font-family: 'IBM Plex Mono', monospace !important; }
+        .ql-container.ql-snow { border: 1px solid var(--border) !important; border-top: none !important; border-radius: 0 0 2px 2px; font-family: 'IBM Plex Mono', monospace !important; font-size: 0.95rem; min-height: 400px; background: var(--bg); }
+        .ql-editor { min-height: 400px; color: var(--text); line-height: 1.85; }
+        .ql-editor.ql-blank::before { color: var(--text-muted) !important; font-style: normal !important; }
         .ql-snow .ql-stroke { stroke: var(--text-secondary) !important; }
         .ql-snow .ql-fill { fill: var(--text-secondary) !important; }
         .ql-snow .ql-picker-label { color: var(--text-secondary) !important; }
-        .ql-snow .ql-picker-options {
-            background: var(--bg) !important;
-            border-color: var(--border) !important;
-        }
+        .ql-snow .ql-picker-options { background: var(--bg) !important; border-color: var(--border) !important; }
         .ql-snow .ql-picker-item { color: var(--text) !important; }
         .ql-snow .ql-active .ql-stroke { stroke: var(--text) !important; }
         .ql-snow .ql-active .ql-fill { fill: var(--text) !important; }
         .ql-toolbar button:hover .ql-stroke { stroke: var(--text) !important; }
         .ql-toolbar button:hover .ql-fill { fill: var(--text) !important; }
 
-        .editor-actions {
-            margin-top: 1.5rem;
-            display: flex; gap: 1rem; align-items: center;
-        }
-        .status {
-            font-size: 0.75rem; color: var(--text-muted);
-            margin-left: auto;
-        }
+        /* Quill image styles */
+        .ql-editor img { max-width: 100%; height: auto; cursor: pointer; border-radius: 2px; margin: 0.5rem 0; }
+        .ql-editor img.img-small { width: 25%; }
+        .ql-editor img.img-medium { width: 50%; }
+        .ql-editor img.img-large { width: 75%; }
+        .ql-editor img.img-full { width: 100%; }
+        .ql-editor img.img-float-left { float: left; margin-right: 1rem; margin-bottom: 0.5rem; }
+        .ql-editor img.img-float-right { float: right; margin-left: 1rem; margin-bottom: 0.5rem; }
+        .ql-editor img.img-center { display: block; margin-left: auto; margin-right: auto; }
+        .ql-editor img.img-selected { outline: 2px solid var(--text); outline-offset: 2px; }
+
+        .editor-actions { margin-top: 1.5rem; display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+        .status { font-size: 0.75rem; color: var(--text-muted); margin-left: auto; }
         .status.success { color: #4a8; }
         .status.error { color: #c44; }
 
+        /* Image toolbar */
+        .img-toolbar { display: none; position: absolute; z-index: 60; background: var(--bg); border: 1px solid var(--border); border-radius: 4px; padding: 0.4rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .img-toolbar.active { display: flex; gap: 0.3rem; flex-wrap: wrap; align-items: center; }
+        .img-toolbar button { padding: 0.25rem 0.5rem; font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; background: var(--surface); color: var(--text-secondary); border: 1px solid var(--border); border-radius: 2px; cursor: pointer; white-space: nowrap; }
+        .img-toolbar button:hover { background: var(--text); color: var(--bg); }
+        .img-toolbar .sep { width: 1px; height: 18px; background: var(--border); margin: 0 0.2rem; }
+
         /* Image upload overlay */
-        .image-upload-overlay {
-            display: none; position: fixed; inset: 0; z-index: 100;
-            background: rgba(0,0,0,0.5); backdrop-filter: blur(4px);
-            align-items: center; justify-content: center;
-        }
+        .image-upload-overlay { display: none; position: fixed; inset: 0; z-index: 100; background: rgba(0,0,0,0.5); backdrop-filter: blur(4px); align-items: center; justify-content: center; }
         .image-upload-overlay.active { display: flex; }
-        .image-upload-box {
-            background: var(--bg); border: 1px solid var(--border);
-            padding: 2rem; border-radius: 4px; max-width: 400px; width: 90%;
-            text-align: center;
-        }
-        .image-upload-box h3 {
-            font-size: 0.88rem; font-weight: 600; margin-bottom: 1rem;
-        }
-        .drop-zone {
-            border: 2px dashed var(--border); border-radius: 4px;
-            padding: 2rem; margin-bottom: 1rem; cursor: pointer;
-            transition: border-color 0.2s;
-        }
+        .image-upload-box { background: var(--bg); border: 1px solid var(--border); padding: 2rem; border-radius: 4px; max-width: 400px; width: 90%; text-align: center; }
+        .image-upload-box h3 { font-size: 0.88rem; font-weight: 600; margin-bottom: 1rem; }
+        .drop-zone { border: 2px dashed var(--border); border-radius: 4px; padding: 2rem; margin-bottom: 1rem; cursor: pointer; transition: border-color 0.2s; }
         .drop-zone:hover, .drop-zone.dragover { border-color: var(--text); }
         .drop-zone p { font-size: 0.78rem; color: var(--text-muted); }
         .image-upload-box .or { font-size: 0.72rem; color: var(--text-muted); margin: 0.5rem 0; }
-        .image-url-input {
-            width: 100%; padding: 0.5rem 0.8rem; margin-bottom: 1rem;
-            font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem;
-            background: var(--bg); color: var(--text);
-            border: 1px solid var(--border); border-radius: 2px; outline: none;
-        }
+        .image-url-input { width: 100%; padding: 0.5rem 0.8rem; margin-bottom: 1rem; font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem; background: var(--bg); color: var(--text); border: 1px solid var(--border); border-radius: 2px; outline: none; }
         .upload-actions { display: flex; gap: 0.5rem; justify-content: center; }
 
-        /* Loading spinner */
-        .loading { font-size: 0.78rem; color: var(--text-muted); padding: 2rem 0; }
+        /* Post list */
+        .post-list { list-style: none; padding: 0; }
+        .post-list li { padding: 0.8rem 0; border-bottom: 1px solid var(--border-subtle); display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+        .post-list li:last-child { border-bottom: none; }
+        .post-list .post-info { flex: 1; min-width: 0; }
+        .post-list .post-name { font-size: 0.88rem; font-weight: 500; color: var(--text); cursor: pointer; word-break: break-word; }
+        .post-list .post-name:hover { text-decoration: underline; }
+        .post-list .post-date { font-size: 0.72rem; color: var(--text-muted); margin-top: 0.15rem; }
+        .post-list .post-tags { display: flex; gap: 0.3rem; flex-wrap: wrap; margin-top: 0.3rem; }
+        .tag-badge { font-size: 0.6rem; padding: 0.1rem 0.4rem; border: 1px solid var(--border); border-radius: 2px; color: var(--text-muted); }
+        .loading-msg { font-size: 0.78rem; color: var(--text-muted); padding: 1rem 0; }
     </style>
 </head>
 <body>
@@ -240,11 +154,16 @@ permalink: /admin/
     <div id="editor-screen">
         <div class="tabs">
             <button class="tab active" onclick="switchTab('essay')">new essay</button>
+            <button class="tab" onclick="switchTab('edit')">edit essays</button>
             <button class="tab" onclick="switchTab('about')">edit about</button>
         </div>
 
-        <!-- New Essay Tab -->
+        <!-- New/Edit Essay Tab -->
         <div class="tab-content active" id="tab-essay">
+            <div id="edit-mode-banner" style="display:none; margin-bottom:1.5rem; padding:0.6rem 1rem; background:var(--surface); border:1px solid var(--border); border-radius:2px; font-size:0.78rem;">
+                editing: <strong id="edit-mode-title"></strong>
+                <button class="btn btn-secondary btn-small" onclick="clearEditMode()" style="margin-left:1rem;">new essay instead</button>
+            </div>
             <div class="field">
                 <label>title</label>
                 <input type="text" id="post-title" placeholder="The title of your essay">
@@ -254,7 +173,11 @@ permalink: /admin/
                 <input type="date" id="post-date">
             </div>
             <div class="field">
-                <label>excerpt (optional - shows on essays list)</label>
+                <label>tags (comma-separated)</label>
+                <input type="text" id="post-tags" placeholder="technology, startups, life">
+            </div>
+            <div class="field">
+                <label>excerpt (optional)</label>
                 <textarea id="post-excerpt" rows="2" placeholder="A short summary..."></textarea>
             </div>
             <div class="field">
@@ -268,6 +191,12 @@ permalink: /admin/
             </div>
         </div>
 
+        <!-- Edit Essays List Tab -->
+        <div class="tab-content" id="tab-edit">
+            <div id="posts-loading" class="loading-msg">loading posts...</div>
+            <ul class="post-list" id="posts-list"></ul>
+        </div>
+
         <!-- Edit About Tab -->
         <div class="tab-content" id="tab-about">
             <div class="field">
@@ -279,6 +208,19 @@ permalink: /admin/
                 <span class="status" id="about-status-msg"></span>
             </div>
         </div>
+    </div>
+
+    <!-- Image toolbar (floating, for resizing) -->
+    <div class="img-toolbar" id="img-toolbar">
+        <button onclick="resizeImg('25%')">25%</button>
+        <button onclick="resizeImg('50%')">50%</button>
+        <button onclick="resizeImg('75%')">75%</button>
+        <button onclick="resizeImg('100%')">100%</button>
+        <div class="sep"></div>
+        <button onclick="alignImg('left')">float left</button>
+        <button onclick="alignImg('center')">center</button>
+        <button onclick="alignImg('right')">float right</button>
+        <button onclick="alignImg('')">reset</button>
     </div>
 
     <!-- Image upload overlay -->
@@ -301,14 +243,15 @@ permalink: /admin/
 
     <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
     <script>
-        let quillEssay;
-        let quillAbout;
-        let activeQuill;
-        let adminPassword = '';
-        let imageInsertIndex = 0;
-        let aboutSha = '';
-        let aboutLoaded = false;
-        let currentTab = 'essay';
+        var quillEssay, quillAbout, activeQuill;
+        var adminPassword = '';
+        var imageInsertIndex = 0;
+        var aboutSha = '', aboutLoaded = false;
+        var currentTab = 'essay';
+        var selectedImg = null;
+
+        // Edit mode state
+        var editingPost = null; // { path, sha }
 
         var toolbarOptions = {
             container: [
@@ -326,7 +269,7 @@ permalink: /admin/
             ],
             handlers: {
                 image: function () {
-                    activeQuill = currentTab === 'essay' ? quillEssay : quillAbout;
+                    activeQuill = currentTab === 'about' ? quillAbout : quillEssay;
                     var range = activeQuill.getSelection(true);
                     imageInsertIndex = range ? range.index : activeQuill.getLength();
                     document.getElementById('image-overlay').classList.add('active');
@@ -334,44 +277,36 @@ permalink: /admin/
             }
         };
 
-        // Theme
         function toggleTheme() {
             var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
             if (isDark) { document.documentElement.removeAttribute('data-theme'); localStorage.setItem('theme', 'light'); }
             else { document.documentElement.setAttribute('data-theme', 'dark'); localStorage.setItem('theme', 'dark'); }
         }
 
-        // Set today's date
         document.getElementById('post-date').value = new Date().toISOString().split('T')[0];
 
-        // Tabs
+        // ─── Tabs ───
         function switchTab(tab) {
             currentTab = tab;
-            document.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('active'); });
-            document.querySelectorAll('.tab-content').forEach(function(t) { t.classList.remove('active'); });
-            if (tab === 'essay') {
-                document.querySelectorAll('.tab')[0].classList.add('active');
-                document.getElementById('tab-essay').classList.add('active');
-            } else {
-                document.querySelectorAll('.tab')[1].classList.add('active');
-                document.getElementById('tab-about').classList.add('active');
-                if (!aboutLoaded) loadAboutContent();
-            }
+            document.querySelectorAll('.tab').forEach(function(t, i) {
+                t.classList.toggle('active', (tab === 'essay' && i === 0) || (tab === 'edit' && i === 1) || (tab === 'about' && i === 2));
+            });
+            document.getElementById('tab-essay').classList.toggle('active', tab === 'essay');
+            document.getElementById('tab-edit').classList.toggle('active', tab === 'edit');
+            document.getElementById('tab-about').classList.toggle('active', tab === 'about');
+
+            if (tab === 'edit') loadPostsList();
+            if (tab === 'about' && !aboutLoaded) loadAboutContent();
         }
 
-        // Login
+        // ─── Login ───
         async function handleLogin(e) {
             e.preventDefault();
             var pw = document.getElementById('password-input').value;
             var errorEl = document.getElementById('login-error');
             errorEl.textContent = '';
-
             try {
-                var res = await fetch('/api/login', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ password: pw })
-                });
+                var res = await fetch('/api/login', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ password: pw }) });
                 var data = await res.json().catch(function() { return {}; });
                 if (res.ok && data.ok) {
                     adminPassword = pw;
@@ -386,127 +321,91 @@ permalink: /admin/
             }
         }
 
-        // Editors
+        // ─── Editors ───
         function initEditors() {
-            quillEssay = new Quill('#editor-essay', {
-                theme: 'snow',
-                placeholder: 'Start writing your essay...',
-                modules: { toolbar: toolbarOptions }
-            });
-
-            quillAbout = new Quill('#editor-about', {
-                theme: 'snow',
-                placeholder: 'Write about yourself...',
-                modules: { toolbar: toolbarOptions }
-            });
-
+            quillEssay = new Quill('#editor-essay', { theme: 'snow', placeholder: 'Start writing your essay...', modules: { toolbar: toolbarOptions } });
+            quillAbout = new Quill('#editor-about', { theme: 'snow', placeholder: 'Write about yourself...', modules: { toolbar: toolbarOptions } });
             activeQuill = quillEssay;
+            setupImageClickHandlers();
         }
 
-        // Load about content
-        async function loadAboutContent() {
-            var statusEl = document.getElementById('about-status-msg');
-            statusEl.textContent = 'loading...';
-            statusEl.className = 'status';
-
-            try {
-                var res = await fetch('/api/about', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ password: adminPassword, action: 'get' })
+        // ─── Image click-to-resize ───
+        function setupImageClickHandlers() {
+            document.querySelectorAll('.ql-editor').forEach(function(editor) {
+                editor.addEventListener('click', function(e) {
+                    if (e.target.tagName === 'IMG') {
+                        selectImage(e.target);
+                    } else {
+                        deselectImage();
+                    }
                 });
-                var data = await res.json();
-                if (res.ok && data.ok) {
-                    quillAbout.root.innerHTML = data.content;
-                    aboutSha = data.sha;
-                    aboutLoaded = true;
-                    statusEl.textContent = '';
-                } else {
-                    statusEl.textContent = data.error || 'failed to load';
-                    statusEl.className = 'status error';
-                }
-            } catch (err) {
-                statusEl.textContent = 'failed to load: ' + err.message;
-                statusEl.className = 'status error';
-            }
+            });
         }
 
-        // Save about
-        async function handleSaveAbout() {
-            var content = quillAbout.root.innerHTML;
-            var statusEl = document.getElementById('about-status-msg');
-            var btn = document.getElementById('save-about-btn');
-
-            if (!content || content === '<p><br></p>') {
-                statusEl.textContent = 'content is required';
-                statusEl.className = 'status error';
-                return;
-            }
-
-            btn.disabled = true;
-            statusEl.textContent = 'saving...';
-            statusEl.className = 'status';
-
-            try {
-                var res = await fetch('/api/about', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        password: adminPassword,
-                        action: 'update',
-                        content: content,
-                        sha: aboutSha
-                    })
-                });
-                var data = await res.json();
-                if (res.ok && data.ok) {
-                    statusEl.textContent = 'saved - site will rebuild in ~30s';
-                    statusEl.className = 'status success';
-                    aboutLoaded = false; // Reload sha on next visit
-                } else {
-                    statusEl.textContent = data.error || 'failed to save';
-                    statusEl.className = 'status error';
-                }
-            } catch (err) {
-                statusEl.textContent = 'connection error';
-                statusEl.className = 'status error';
-            }
-            btn.disabled = false;
+        function selectImage(img) {
+            deselectImage();
+            selectedImg = img;
+            img.classList.add('img-selected');
+            var toolbar = document.getElementById('img-toolbar');
+            var rect = img.getBoundingClientRect();
+            toolbar.style.top = (window.scrollY + rect.top - 40) + 'px';
+            toolbar.style.left = rect.left + 'px';
+            toolbar.classList.add('active');
         }
 
-        // Image upload
+        function deselectImage() {
+            if (selectedImg) selectedImg.classList.remove('img-selected');
+            selectedImg = null;
+            document.getElementById('img-toolbar').classList.remove('active');
+        }
+
+        function resizeImg(width) {
+            if (!selectedImg) return;
+            selectedImg.style.width = width;
+            selectedImg.style.height = 'auto';
+            // Remove size classes
+            selectedImg.className = selectedImg.className.replace(/img-(small|medium|large|full)/g, '').trim();
+        }
+
+        function alignImg(align) {
+            if (!selectedImg) return;
+            // Remove alignment classes
+            selectedImg.className = selectedImg.className.replace(/img-(float-left|float-right|center)/g, '').trim();
+            selectedImg.style.float = '';
+            selectedImg.style.display = '';
+            selectedImg.style.marginLeft = '';
+            selectedImg.style.marginRight = '';
+            if (align === 'left') { selectedImg.style.float = 'left'; selectedImg.style.marginRight = '1rem'; selectedImg.style.marginBottom = '0.5rem'; }
+            else if (align === 'right') { selectedImg.style.float = 'right'; selectedImg.style.marginLeft = '1rem'; selectedImg.style.marginBottom = '0.5rem'; }
+            else if (align === 'center') { selectedImg.style.display = 'block'; selectedImg.style.marginLeft = 'auto'; selectedImg.style.marginRight = 'auto'; }
+        }
+
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.ql-editor') && !e.target.closest('.img-toolbar')) {
+                deselectImage();
+            }
+        });
+
+        // ─── Image upload ───
         var dropZone = document.getElementById('drop-zone');
         var fileInput = document.getElementById('file-input');
-
         dropZone.addEventListener('click', function() { fileInput.click(); });
         dropZone.addEventListener('dragover', function(e) { e.preventDefault(); dropZone.classList.add('dragover'); });
         dropZone.addEventListener('dragleave', function() { dropZone.classList.remove('dragover'); });
-        dropZone.addEventListener('drop', function(e) {
-            e.preventDefault();
-            dropZone.classList.remove('dragover');
-            if (e.dataTransfer.files.length) handleFileUpload(e.dataTransfer.files[0]);
-        });
-        fileInput.addEventListener('change', function() {
-            if (fileInput.files.length) handleFileUpload(fileInput.files[0]);
-        });
+        dropZone.addEventListener('drop', function(e) { e.preventDefault(); dropZone.classList.remove('dragover'); if (e.dataTransfer.files.length) handleFileUpload(e.dataTransfer.files[0]); });
+        fileInput.addEventListener('change', function() { if (fileInput.files.length) handleFileUpload(fileInput.files[0]); });
 
         async function handleFileUpload(file) {
             var statusEl = document.getElementById('upload-status');
             statusEl.textContent = 'uploading...';
             statusEl.className = 'status';
-
             var reader = new FileReader();
             reader.onload = async function () {
                 var base64 = reader.result.split(',')[1];
                 var ext = file.name.split('.').pop();
                 var filename = Date.now() + '.' + ext;
-
                 try {
-                    var res = await fetch('/api/upload-image', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ password: adminPassword, filename: filename, content: base64 })
-                    });
+                    var res = await fetch('/api/upload-image', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ password: adminPassword, filename: filename, content: base64 }) });
                     var data = await res.json();
                     if (res.ok) {
                         document.getElementById('image-url-input').value = data.url;
@@ -527,6 +426,7 @@ permalink: /admin/
         function insertImage() {
             var url = document.getElementById('image-url-input').value.trim();
             if (!url) return;
+            activeQuill = currentTab === 'about' ? quillAbout : quillEssay;
             activeQuill.insertEmbed(imageInsertIndex, 'image', url);
             activeQuill.setSelection(imageInsertIndex + 1);
             closeImageOverlay();
@@ -539,19 +439,100 @@ permalink: /admin/
             fileInput.value = '';
         }
 
-        // Publish essay
-        async function handlePublish() {
-            await savePost(false);
+        // ─── Load posts list ───
+        async function loadPostsList() {
+            var listEl = document.getElementById('posts-list');
+            var loadingEl = document.getElementById('posts-loading');
+            loadingEl.style.display = 'block';
+            listEl.innerHTML = '';
+            try {
+                var res = await fetch('/api/posts', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ password: adminPassword, action: 'list' }) });
+                var data = await res.json();
+                loadingEl.style.display = 'none';
+                if (res.ok && data.posts) {
+                    data.posts.forEach(function(post) {
+                        var li = document.createElement('li');
+                        li.innerHTML = '<div class="post-info"><div class="post-name" onclick="loadPost(\'' + post.path.replace(/'/g, "\\'") + '\')">' + escapeHtml(post.slug) + '</div><div class="post-date">' + post.date + '</div></div><button class="btn btn-secondary btn-small" onclick="loadPost(\'' + post.path.replace(/'/g, "\\'") + '\')">edit</button>';
+                        listEl.appendChild(li);
+                    });
+                    if (data.posts.length === 0) {
+                        listEl.innerHTML = '<li class="loading-msg">no posts yet</li>';
+                    }
+                }
+            } catch (err) {
+                loadingEl.textContent = 'failed to load posts';
+                loadingEl.className = 'loading-msg error';
+            }
         }
 
-        async function handleSaveDraft() {
-            await savePost(true);
+        function escapeHtml(str) {
+            var div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
         }
+
+        // ─── Load single post for editing ───
+        async function loadPost(path) {
+            var statusEl = document.getElementById('status-msg');
+            statusEl.textContent = 'loading post...';
+            statusEl.className = 'status';
+
+            try {
+                var res = await fetch('/api/posts', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ password: adminPassword, action: 'get', path: path }) });
+                var data = await res.json();
+                if (res.ok && data.ok) {
+                    // Switch to essay tab
+                    switchTab('essay');
+
+                    // Fill form
+                    var fm = data.frontmatter || {};
+                    document.getElementById('post-title').value = fm.title || '';
+                    document.getElementById('post-date').value = fm.date || '';
+                    document.getElementById('post-excerpt').value = fm.excerpt || '';
+                    document.getElementById('post-tags').value = (fm.tags || []).join(', ');
+                    quillEssay.root.innerHTML = data.content || '';
+
+                    // Set edit mode
+                    editingPost = { path: data.path, sha: data.sha };
+                    document.getElementById('edit-mode-banner').style.display = 'block';
+                    document.getElementById('edit-mode-title').textContent = fm.title || path;
+                    document.getElementById('publish-btn').textContent = 'update';
+
+                    statusEl.textContent = 'post loaded';
+                    statusEl.className = 'status success';
+                    setTimeout(function() { statusEl.textContent = ''; }, 2000);
+                } else {
+                    statusEl.textContent = data.error || 'failed to load';
+                    statusEl.className = 'status error';
+                }
+            } catch (err) {
+                statusEl.textContent = 'failed to load: ' + err.message;
+                statusEl.className = 'status error';
+            }
+        }
+
+        function clearEditMode() {
+            editingPost = null;
+            document.getElementById('edit-mode-banner').style.display = 'none';
+            document.getElementById('publish-btn').textContent = 'publish';
+            document.getElementById('post-title').value = '';
+            document.getElementById('post-date').value = new Date().toISOString().split('T')[0];
+            document.getElementById('post-tags').value = '';
+            document.getElementById('post-excerpt').value = '';
+            quillEssay.setContents([]);
+            document.getElementById('status-msg').textContent = '';
+        }
+
+        // ─── Publish / Update essay ───
+        async function handlePublish() { await savePost(false); }
+        async function handleSaveDraft() { await savePost(true); }
 
         async function savePost(isDraft) {
             var title = document.getElementById('post-title').value.trim();
             var date = document.getElementById('post-date').value;
             var excerpt = document.getElementById('post-excerpt').value.trim();
+            var tagsRaw = document.getElementById('post-tags').value.trim();
+            var tags = tagsRaw ? tagsRaw.split(',').map(function(t) { return t.trim(); }).filter(function(t) { return t; }) : [];
             var content = quillEssay.root.innerHTML;
             var statusEl = document.getElementById('status-msg');
             var publishBtn = document.getElementById('publish-btn');
@@ -561,33 +542,31 @@ permalink: /admin/
             if (!content || content === '<p><br></p>') { statusEl.textContent = 'content is required'; statusEl.className = 'status error'; return; }
 
             publishBtn.disabled = true;
-            statusEl.textContent = 'publishing...';
+            statusEl.textContent = editingPost ? 'updating...' : 'publishing...';
             statusEl.className = 'status';
 
+            var payload = { password: adminPassword, title: title, date: date, excerpt: excerpt, content: content, tags: tags, draft: isDraft };
+            if (editingPost) {
+                payload.editPath = editingPost.path;
+                payload.editSha = editingPost.sha;
+            }
+
             try {
-                var res = await fetch('/api/publish', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        password: adminPassword,
-                        title: title, date: date, excerpt: excerpt, content: content,
-                        draft: isDraft
-                    })
-                });
+                var res = await fetch('/api/publish', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
                 var data = await res.json();
                 if (res.ok) {
-                    statusEl.textContent = isDraft ? 'draft saved' : 'published - site will rebuild in ~30s';
-                    statusEl.className = 'status success';
-                    if (!isDraft) {
-                        setTimeout(function() {
-                            document.getElementById('post-title').value = '';
-                            document.getElementById('post-excerpt').value = '';
-                            quillEssay.setContents([]);
-                            statusEl.textContent = '';
-                        }, 5000);
+                    if (editingPost) {
+                        statusEl.textContent = 'updated - site will rebuild in ~30s';
+                        statusEl.className = 'status success';
+                    } else {
+                        statusEl.textContent = isDraft ? 'draft saved' : 'published - site will rebuild in ~30s';
+                        statusEl.className = 'status success';
+                        if (!isDraft) {
+                            setTimeout(function() { clearEditMode(); }, 5000);
+                        }
                     }
                 } else {
-                    statusEl.textContent = data.error || 'failed to publish';
+                    statusEl.textContent = data.error || 'failed';
                     statusEl.className = 'status error';
                 }
             } catch (err) {
@@ -597,9 +576,35 @@ permalink: /admin/
             publishBtn.disabled = false;
         }
 
-        // Close overlay on escape
+        // ─── About ───
+        async function loadAboutContent() {
+            var statusEl = document.getElementById('about-status-msg');
+            statusEl.textContent = 'loading...'; statusEl.className = 'status';
+            try {
+                var res = await fetch('/api/about', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ password: adminPassword, action: 'get' }) });
+                var data = await res.json();
+                if (res.ok && data.ok) { quillAbout.root.innerHTML = data.content; aboutSha = data.sha; aboutLoaded = true; statusEl.textContent = ''; }
+                else { statusEl.textContent = data.error || 'failed to load'; statusEl.className = 'status error'; }
+            } catch (err) { statusEl.textContent = 'failed to load'; statusEl.className = 'status error'; }
+        }
+
+        async function handleSaveAbout() {
+            var content = quillAbout.root.innerHTML;
+            var statusEl = document.getElementById('about-status-msg');
+            var btn = document.getElementById('save-about-btn');
+            if (!content || content === '<p><br></p>') { statusEl.textContent = 'content is required'; statusEl.className = 'status error'; return; }
+            btn.disabled = true; statusEl.textContent = 'saving...'; statusEl.className = 'status';
+            try {
+                var res = await fetch('/api/about', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ password: adminPassword, action: 'update', content: content, sha: aboutSha }) });
+                var data = await res.json();
+                if (res.ok && data.ok) { statusEl.textContent = 'saved - site will rebuild in ~30s'; statusEl.className = 'status success'; aboutLoaded = false; }
+                else { statusEl.textContent = data.error || 'failed to save'; statusEl.className = 'status error'; }
+            } catch (err) { statusEl.textContent = 'connection error'; statusEl.className = 'status error'; }
+            btn.disabled = false;
+        }
+
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') closeImageOverlay();
+            if (e.key === 'Escape') { closeImageOverlay(); deselectImage(); }
         });
     </script>
 </body>
