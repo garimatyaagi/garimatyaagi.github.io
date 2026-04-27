@@ -2,12 +2,32 @@
 layout: default
 ---
 <div class="essays-page">
+    <h1 class="page-heading">essays</h1>
+    <svg class="doodle" viewBox="0 0 24 24" width="32" height="32" xmlns="http://www.w3.org/2000/svg" style="margin-bottom: 1.5rem;">
+        <path class="doodle-draw" d="M3 4 C3 2, 21 2, 21 4 L21 20 C21 22, 3 22, 3 20 Z" />
+        <path class="doodle-draw" d="M6 8 L18 8 M6 12 L18 12 M6 16 L14 16" style="stroke-dasharray:100;stroke-dashoffset:100;animation-delay:0.3s" />
+    </svg>
     {%- if site.posts.size > 0 -%}
     <ul class="essays-list">
         {%- for post in site.posts -%}
-        <li>
+        <li class="reveal">
             <a class="essay-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
-            <span class="essay-date">{{ post.date | date: "%B %Y" }}</span>
+            <div class="essay-meta">
+                <span class="essay-date">{{ post.date | date: "%B %Y" }}</span>
+                {%- assign words = post.content | number_of_words -%}
+                {%- if words > 20 -%}
+                {%- assign minutes = words | divided_by: 200 -%}
+                {%- if minutes < 1 %}{% assign minutes = 1 %}{% endif -%}
+                <span class="essay-reading-time">~{{ minutes }} min</span>
+                {%- endif -%}
+            </div>
+            {%- if post.tags.size > 0 -%}
+            <div class="essay-tags">
+                {%- for tag in post.tags -%}
+                <span class="essay-tag">{{ tag }}</span>
+                {%- endfor -%}
+            </div>
+            {%- endif -%}
         </li>
         {%- endfor -%}
     </ul>

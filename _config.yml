@@ -6,11 +6,11 @@ email: garimatyagi268@gmail.com
 linkedin_username: garimatyagi
 twitter_username: gartyagi
 url: https://lettersbyg.com
-baseurl: "./"
+baseurl: ""
 
 # Build settings
 markdown: kramdown
-theme: minima
+theme: null
 
 # Plugins
 plugins:
@@ -24,10 +24,6 @@ collections:
     output: true
     permalink: /:year/:month/:day/:slug/
 
-# Pagination
-paginate: 10
-paginate_path: "/page:num/"
-
 # Exclude files/directories
 exclude:
   - node_modules
@@ -35,3 +31,6 @@ exclude:
   - Gemfile.lock
   - README.md
   - .gitignore
+  - vercel.json
+  - .context
+  - api

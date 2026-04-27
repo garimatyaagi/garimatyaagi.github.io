@@ -5,22 +5,38 @@ layout: default
     <header class="post-header">
         <h1 class="post-title">{{ page.title | escape }}</h1>
         <p class="post-meta">
-            <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+            <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}">
                 {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
                 {{ page.date | date: date_format }}
             </time>
-            {%- if page.author -%}
-            • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card"
-                    itemprop="name">{{ page.author }}</span></span>
+            {%- assign words = page.content | number_of_words -%}
+            {%- if words > 20 -%}
+            {%- assign minutes = words | divided_by: 200 -%}
+            {%- if minutes < 1 %}{% assign minutes = 1 %}{% endif -%}
+            &middot; ~{{ minutes }} min
             {%- endif -%}
         </p>
+        {%- if page.tags.size > 0 -%}
+        <div class="post-tags">
+            {%- for tag in page.tags -%}
+            <span class="post-tag">{{ tag }}</span>
+            {%- endfor -%}
+        </div>
+        {%- endif -%}
     </header>
 
     <div class="post-content">
         {{ content }}
     </div>
 
-    {%- if site.disqus.shortname -%}
-    {%- include disqus_comments.html -%}
-    {%- endif -%}
+    <nav class="post-nav">
+        {%- if page.previous.url -%}
+        <a href="{{ page.previous.url | relative_url }}">&larr; {{ page.previous.title | escape }}</a>
+        {%- else -%}
+        <span></span>
+        {%- endif -%}
+        {%- if page.next.url -%}
+        <a href="{{ page.next.url | relative_url }}">{{ page.next.title | escape }} &rarr;</a>
+        {%- endif -%}
+    </nav>
 </article>

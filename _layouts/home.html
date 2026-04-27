@@ -2,25 +2,30 @@
 layout: default
 ---
 <div class="home">
-    {{ content }}
+    <div class="hero-section">
+        <p class="hero-quote">"Be yourself; everyone else is already taken."</p>
+        <p class="hero-attribution">- Oscar Wilde</p>
+        <svg class="doodle-hero doodle" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path class="doodle-draw" d="M12 2 L14 8 L20 8 L15 12 L17 18 L12 14 L7 18 L9 12 L4 8 L10 8 Z" />
+        </svg>
+    </div>
+
+    <div class="about-content">
+        {{ content }}
+    </div>
 
     {%- assign favorite_posts = site.posts | where_exp: "post", "post.tags contains 'favorite'" -%}
     {%- if favorite_posts.size > 0 -%}
-    <p>I like to write. If you don't know where to start, then start from here:</p>
-    <ul class="post-list">
-        {%- for post in favorite_posts -%}
-        <li>
-            <span class="post-meta">{{ post.date | date: date_format }}</span>
-            <h3>
-                <a class="post-link" href="{{ post.url | relative_url }}">
-                    {{ post.title | escape }}
-                </a>
-            </h3>
-            {%- if post.excerpt -%}
-            {{ post.excerpt }}
-            {%- endif -%}
-        </li>
-        {%- endfor -%}
-    </ul>
+    <div class="favorite-essays reveal">
+        <h2 class="section-heading">start here</h2>
+        <ul>
+            {%- for post in favorite_posts -%}
+            <li>
+                <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+                <span class="essay-date">{{ post.date | date: "%B %Y" }}</span>
+            </li>
+            {%- endfor -%}
+        </ul>
+    </div>
     {%- endif -%}
 </div>
