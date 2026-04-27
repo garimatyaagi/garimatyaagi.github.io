@@ -1,298 +1,205 @@
 ---
 layout: post
-title: Opportunities in Education Sector
+title: "Education for the 16 Year Old me"
 date: 2025-12-21
-categories:
-  - Writing
-  - Thoughts
-excerpt: Diving deep into the education system
----
-We started exploring education space out of strong personal interest. A very high impact area and very high scope to fix things.
-
-So we went back to basics and tried to understand the ecosystem the way it actually functions day-to-day — across **parents, teachers, schools, and students.** We talked to 50+ stakeholders across India. What follows is a crisp synthesis of the top-level insights we kept hearing (and the tensions underneath them).
-
+excerpt: "Diving deep into the education system"
+tags:
+  - Startups
 ---
 
-## Our approach: talk to every stakeholder in the loop
+<p>Education is something I have always felt very deeply about. I recall having my first inter school activity in 12th grade because the first choice for it was too busy to attend it. And I recall it being the only one in school. I've got to be the most talentless person there. Or the opportunities only came to the top 1% of the batch. </p><p><br></p><p>Did school realise at that point how these things compound? It's not a co incidence that it were the same kids being given these opportunities in 4th and 12th grade. Mostly because they were better in written exams in 4th grade. How can someone be good at written exams in 4th grade? For me, I was never good at it. Including now. </p><p><br></p><p>School was a great. I feel fortunate to have met people that I did. You cannot trash on 14 years of your life. That's more than half my life. So I really don't know if it was or was not great- but I will always have to believe that it was.</p><p><br></p><p>I started exploring education space out of strong personal interest. I was very clear I wanted to build a new age school. Although my school made sure (JK no blames) that I wasn't permitted to dream that high.
 
-It’s a **multi-stakeholder system** where the person paying isn't the person using the services. The results are long term- in terms of job and what the person would end up becoming. There isn't much innovation as schools require very high capex and there are regulations around the space.
-
-So instead of only talking to “users” (students), we spoke across the chain:
-
-- **Parents** (and how decisions actually get made at home)
-    
-- **Teachers** (constraints, incentives, and what they can/can’t change)
-    
-- **Schools** (administration + policy + “what is measurable”)
-    
-- **Students** (motivation, pressure, autonomy, and where attention truly goes)
-    
+I went back to basics and tried to understand the ecosystem the way it actually functions day-to-day — across <strong>parents, teachers, schools, and students</strong>. I talked to 50+ stakeholders across India. What follows is a crisp synthesis of the top-level insights I kept hearing.
 
 ---
 
-## The ecosystem, in one line: everyone cares, but in different directions
+<strong><u>Approach: talk to every stakeholder in the loop</u></strong>
+
+<strong>It’s a multi-stakeholder system where the person paying isn't the person using the services.</strong> The results are long term- in terms of job and what the person would end up becoming. Yes- no matter what the parents say a lot of schooling is still correlated with the results it gives in 12th grade. 
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABXgAAADcCAIAAABF3F4/AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAFeKADAAQAAAABAAAA3AAAAABpvw1fAAA+AUlEQVR4Ae3dd9zsRL348Xvg0HtHlN4VlXIQQQWkC0rzgmABRREsL1HwgiAICCogFwQu9dJ7U0ERkA4CChx6kS5FmvReBM7vc5nXb4y7m9k82WzLfp4/zslmk8nMezKT5JtJdtykSZP+wz8FFFBAAQUUUEABBRRQQAEFFFCgCoHJqkjENBRQQAEFFFBAAQUUUEABBRRQQIH/EzDQ4H6ggAIKKKCAAgoooIACCiiggAKVCRhoqIzShBRQQAEFFFBAAQUUUEABBRRQwECD+4ACCiiggAIKKKCAAgoooIACClQmYKChMkoTUkABBRRQQAEFFFBAAQUUUEABAw3uAwoooIACCiiggAIKKKCAAgooUJmAgYbKKE1IAQUUUEABBRRQQAEFFFBAAQUMNLgPKKCAAgoooIACCiiggAIKKKBAZQIGGiqjNCEFFFBAAQUUUEABBRRQQAEFFDDQ4D6ggAIKKKCAAgoooIACCiiggAKVCRhoqIzShBRQQAEFFFBAAQUUUEABBRRQwECD+4ACCiiggAIKKKCAAgoooIACClQmYKChMkoTUkABBRRQQAEFFFBAAQUUUEABAw3uAwoooIACCiiggAIKKKCAAgooUJmAgYbKKE1IAQUUUEABBRRQQAEFFFBAAQUMNLgPKKCAAgoooIACCiiggAIKKKBAZQIGGiqjNCEFFFBAAQUUUEABBRRQQAEFFDDQ4D6ggAIKKKCAAgoooIACCiiggAKVCRhoqIzShBRQQAEFFFBAAQUUUEABBRRQwECD+4ACCiiggAIKKKCAAgoooIACClQmYKChMkoTUkABBRRQQAEFFFBAAQUUUEABAw3uAwoooIACCiiggAIKKKCAAgooUJmAgYbKKE1IAQUUUEABBRRQQAEFFFBAAQUMNLgPKKCAAgoooIACCiiggAIKKKBAZQIGGiqjNCEFFFBAAQUUUEABBRRQQAEFFDDQ4D6ggAIKKKCAAgoooIACCiiggAKVCRhoqIzShBRQQAEFFFBAAQUUUEABBRRQwECD+4ACCiiggAIKKKCAAgoooIACClQmYKChMkoTUkABBRRQQAEFFFBAAQUUUEABAw3uAwoooIACCiiggAIKKKCAAgooUJmAgYbKKE1IAQUUUEABBRRQQAEFFFBAAQUMNLgPKKCAAgoooIACCiiggAIKKKBAZQIGGiqjNCEFFFBAAQUUUEABBRRQQAEFFDDQ4D6ggAIKKKCAAgoooIACCiiggAKVCRhoqIzShBRQQAEFFFBAAQUUUEABBRRQYHy/CCZMmNCvTbtdBRRQQAEFFFBAAQUUUEABBUZBYOLEib0vpiMaem/uFhVQQAEFFFBAAQUUUEABBRSorcC4SZMm1bZwFkwBBRRQQAEFFFBAAQUUUEABBXor4IiG3nq7NQUUUEABBRRQQAEFFFBAAQVqLWCgodbVa+EUUEABBRRQQAEFFFBAAQUU6K2AgYbeers1BRRQQAEFFFBAAQUUUEABBWotYKCh1tVr4RToh8ADDzzQj826TQUU6LqArbvrxG5AgT4J2Lr7BO9mFaitgIGG2latBVNAAQUUUEABBRRQQAEFFFCg9wIGGnpv7hYVUEABBRRQQAEFFFBAAQUUqK2AgYbaVq0FU0ABBRRQQAEFFFBAAQUUUKD3AgYaem/uFhVQQAEFFFBAAQUUUEABBRSorYCBhtpWrQVTQAEFFFBAAQUUUEABBRRQoPcCBhp6b+4WFVBAAQUUUEABBRRQQAEFFKitgIGG2latBVNAAQUUUEABBRRQQAEFFFCg9wIGGnpv7hYVUEABBRRQQAEFFFBAAQUUqK2AgYbaVq0FU0ABBRRQQAEFFFBAAQUUUKD3AgYaem/uFhVQQAEFFFBAAQUUUEABBRSorYCBhtpWrQVTQAEFFFBAAQUUUEABBRRQoPcCBhp6b+4WFVBAAQUUUEABBRRQQAEFFKitgIGG2latBVNAAQUUUEABBRRQQAEFFFCg9wIGGnpv7hYVUEABBRRQQAEFFFBAAQUUqK2AgYbaVq0FU0ABBRRQQAEFFFBAAQUUUKD3AgYaem/uFhVQQAEFFFBAAQUUUEABBRSorYCBhtpWrQVTQAEFFFBAAQUUUEABBRRQoPcCBhp6b+4WFVBAAQUUUEABBRRQQAEFFKitgIGG2latBVNAAQUUUEABBRRQQAEFFFCg9wIGGnpv7hYVUEABBRRQQAEFFFBAAQUUqK2AgYbaVq0FU0ABBRRQQAEFFFBAAQUUUKD3AgYaem/uFhVQQAEFFFBAAQUUUEABBRSorYCBhtpWrQVTQAEFFFBAAQUUUEABBRRQoPcCBhp6b+4WFVBAAQUUUEABBRRQQAEFFKitgIGG2latBVNAAQUUUEABBRRQQAEFFFCg9wLje79Jt6iAAgoMi8B+++135plnktvpp5/+iiuuGJZsm08FaizQ+1b51a9+9Y477oikEydOjNNOKKBA3wXefPPNTTbZ5PHHHycnG2+88S677NL3LJkBBRRAYFhHNOy2224T/v1vpZVW+sIXvnDqqae+++67g1y111577corr3z11VcPcibNmwL9Erjrrrv+vWU3fnrggQf6lTe3q4AClQj87ne/22KLLThqr7322rvuuuv111/PxH333VdJ4iaigAJ9FCjSuofxTHgY89zH3cBNKxAEhjXQ0Fx/b731FlcgBxxwAGctzd8Ozpw777zztddey94bGZy8mRMFFGgQ2HHHHS+//PKGmX5UQIHSAr/85S9/+tOfElLkqP3ss89eeOGF3/72t5m49957C6bZ+1Z5/PHHM4rBgQwFK8jFRlagYOuu/Ex4qqmmIsCx8847d0++8jx3L6umrMDgCAxroGGvvfY6++yzcZx//vnD4f+qq67aZ599pplmmosuumiQzwYmTZpEtgd82MXg7KDmZDQFllxySVoxNxAo/pRTThna+EILLTSaGpZagdoIPPjgg2eccQaNmmGJPIt08cUX8xzEjDPOWJsCWhAFRlageOsexjPhYczzyO6KFnxwBOrzjoZpp512jTXWYKTAySeffOONNzLemov5Y4455pZbbnn44Yefe+45YhALLLDAl770pdVWWy1WwJVXXvlf//Vf4bI/PNbFORBrcRq01VZbMScs+eqrr5LspZde+ve//32KKaZYdNFF11prrY022ohpFnjkkUe+/OUvM06BtYiAcOvjb3/72wwzzLD66qt/5zvfYbshkUsuuWSPPfZ44403+Hjse39h/tRTT73nnnuycPjITZ5f//rXf/jDHx577DGeOpt11llnn3128s+D4iwZlvFfBRRIt0p8ivQAgfGyyy4766yz7r777nfeeYde4otf/CJ9yGSTTdZwe4QmfMIJJ3AuNcsss6y55prbbLNNtkm2zU/B3sYewH27xgIPPfQQpVt22WU32GCDUEyOyE8+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Ky6vgAKdCAx+OzWHndSv6w6aQLn9udxavSz74Oewco0RLHLlhjVLsJe7RC+3VbNqsjgKtBQw0NCSJXfmPffcs80225x77rm5S/hFrwR22mkn6qJlsCbxVa9y17ftuIv2jd4NK1BYwHaaptIn7TPU3w77AfqKK67g3OPqq68uUgt33HEHC1944YVFFnYZBRRQoGYC4yZNmjSMRfr5z3/+8MMPf/zjH//a1772m9/85o9//OPMM8+877779qAsxDuvuuqqDTbYoAfbqtMmrrvuurnnnnv++eevtlAnnnjiFlts0TLNxFctl698ZpeK3Daffd9FH3jggYUXXrhtPhMLXH/99TTqp556ao455vj85z9/7733brzxxonlO/mqX9XUkOcByUZDrrr6cQSLnPXsezvNZqb4dIet+09/+tPJJ58cNrfjjjsmOorB9Kl8p608weJV2bzkmWeeuemmmzbP78acvh+gQ6FKFPmvf/3rr371qx122GGxxRYrIvOPf/zjpptuWmeddYosnF2m9/tGJ637tNNOIwTD8XqttdYKpbjmmmuo5WWXXZZQS7ZczdO9LGkvt9VcUuf0RsBa7o1zka2ML7LQAC7zrW99i3Dy5z73OfLGFcgss8yy0EILDWA+zVIU+Od7f/HjKEyMYJErqdZrr732zTff/P73vz/NNNM888wzIeJQScotExmQahqQbLQk6tLMESxylySHKNlPvfd33nnnzTnnnJdffnki0DCYhap8p608wU7cXnvttU5WH8Z1SxR5rrnmoqTh364WeaD2jbYl3Xzzzd94440bb7xx9dVXn3zyyVmeQMNyyy33zW9+s+26vSxpL7fVtuAu0CUBa7lLsCWSHdZAQ7qof/nLX7g44RJl9tlnJ7a64oorsvz555/PIw8f+MAHdtttt7D6nnvu+fjjj2+44Yaf+cxnEgm+/fbbnBVx8UMf+tGPfjQbluariy66iK9efPFFTpvWXnvtj33sYzGpO++88/e//z2bmGGGGYiJMBHvyjJ08IUXXphnnnl23333uHyYIEGiwq+88gqhkwUXXPCTn/zkbLPNFr5KrNWyyKy1/fbbL7PMMuT8rrvu4rINjVVXXTWkxr+JbcVlGiY4Kp9yyikPPvjgSy+9xIGWux9LLLFEXCavyHvssccTTzwRF5t11ll/8Ytf8JHw+X777bfuuuuGESJhMYoZwkbpbcXUik/svffejz766Prrr7/eeuuxFnl46KGH4tbz0qHDOuecc7jH/s4776yyyirTTTfdWWedte222wKb2AHyipy3FeYfeOCBHJ6pJm6YkP4NN9xAtVJlIaCW0Ci9iyYy08ev7rvvvi233DJkgFEwTJ9wwgkxP9Xu6olqYsjrIYccwoXQ17/+9bPPPpuPSy+9NMNnpphiikRdkM+8dppojIlskGCJdhq5Wk6UyCHp5LXuRCsoXeSWOcTh17/+NTkJN80aPiaywSrVGiZ2gESRE+20ZTXVdSY96pNPPvnZz36W0Q0cBxmNGEqa55PuGFm35d7C/ERdJNbiq7y9JdFOy3UXiQTTOSzXDZJmVX9nnHHGZZddxl19bvnccsstU0455fLLL8/Z1FRTTRU2kZfDdAbyqpK18vqfcof1dDbS33JnizPJmWaaKS7W9vTy3XffZegEVtNPPz0nnETbwrqJniS9b8RND9QEJzATJkzgZImzbs45F1lkEU5lYw7zdol0SVvuEg2df8PH0qottxXyn5f5dCcTy15wIt2sEp1M6cNfy74ufWZeOhsFEbKL5VVlOofpPapcVbZcK31s6n3XlKUboGkenRjGv+eee44oafaPK8ZQkCuvvPLoo4/mqv6tt9567LHHjjzyyIsvvjh8xSAuJl5//XW6Bv5lmguY8FXi31NPPZXrTIZxcrl+++23H3TQQXwMy3N0IXxLT0ojJ0scd/kYvuIRUwbXPfLII2SDBeh5jz/++IatNG+drey///6MGCdBAiVHHHEE/7ZdK1FkcsWpAJesNFemDzjggKeffjokWGRbDZvOfuSqm9jBwQcfHGemi8w5JReQceE4QYwmejKTxehB4rdhonlbcYFmw8RXBEcYtRsXoEKPOeaY+DFv4qSTTqKiWffVV1/lFtyuu+5KtYaFEzsAC+QVOW9DzN95553ZhTj5JgIV4k3sDw3LN2uU20Ubkq3w4/333186NRomJ2R5q3djV09XE/78TZw4MfQYDRlrrou4QPOemWiMrJWXjQ7bacxP88SYcpho3YlWUK7IMavNOeQUh30gLsA0c8LHRDa6Z9i8AySKnGinsUSDP9FJ6w6lo9bCgZLDYrbzT/gU6Rib95ZEXUTn5rXSe0teOw0Jlugu0gmSbHMOy3WDscjNExxusmdTTHM/pnmxhjmXXHLJPvvsw0MB9I0cx7kfc9RRR4VlEjmMiTSXK/FVov8pd1gvV+SYw+aJxOklZ3TswEQZOBvkjI6dpPm8rrknYRNt943mbHQ4p8PWTZ1yWkUBycahhx7KmUys5fQu0bakMZ1YwMSxIC5TTrV5W4nMF+lkYn6KTCSaVVi9ZSdT7vCX6OvanpmPNRtFyp5Yprkq0znM26PKVWVircSxqVzXlEAY0q+GeEQD90PCnV7CNlz+xeANj3NzB3LcuHHMYcjA1ltvfdhhh62xxhp8JA5Nx8fdeO5LE4NfdNFFubUeV2w5wc7NJTpDwsK3Sy21FPcz7777bj4SoqZtc+TIrrjkkkvyQBpziH7xWNrUU0/NNKsQ7Ocvu2TLaWLk8847L2EwEme8wAorrNA2h6STKDLfEjsnxswEt8rJG1fLDPTgY7ltAcjdXQQ4nDCIY/z4f+1C5YpMTvL+EtvKWyU9n6ElPPMPV3i08oILLogPE+atSEVw/y2OeWE8CPfiwsLpHSAvwfR8Mhb2nwUWWIC9lIXJcFglT6P0LprOSb++peXS4vK23stdPeSB261bbbVV6E9irvLqIi6QN5HXGPOWZ365dppIMP1VXg7zWnfbVpCXYDobed9+6EMfOvzwwxk4RtfK8zWca377299m4XQ2KjdM7wAti5xop3mFreV8TpUIfPNgFKWjr2PsIePLOI6kfRIdY1qpZV2kV+lkb6m2u8jLZ7luMC815nMDMHzL7ZCvfvWrYbrIv2uuuSYj+1iS9kg9coVG7z3ttNOmc1gk5YZl8vofFitxWGet0kVuyFj8mD69/MR7fyzMAFV2e24+hZGq6Z4kJj5EEwxpobVye2/GGWekKcWcV75L5B0L2GLlqunMl+hkIkvLibxmFRZu7mRKH/6q7evS2WhZ0rYzB6QqEztA4thUrmtqazJ0C/zrKnHosp6X4YZLguxiiy++ODfVGfuw0UYbcWebUQPsItkFxjrNwLDtttuu5VqcToWn1Fp+mzeTzPMwAn+EAxh6wBNu3EptG6FIFLlhQ9kly22LpwYIWxB5IWzBfQweo4ibGFORwc8GKWIidFVxOrGtuMxYJ1ZbbTXuulBx3FIAmQGQbVPIojUsnNgBGpbkY16Rm5dsOaecxphy2HK7PZ7JaQqhHI4uHE2bN52oi4aFs0uOaVdvqCaihNmkwlbK1UUihw1f8TFmY0yZb06nkznZgidad/F9LJtgc8ZikZu/ys4h2EeEl8fQeJH7yiuvHL9KZKNyw+I7QLrIMfOjM3Hbbbdx0hbCQ6HUxB3C443dRihYF2PaWxp22s67i4YEW5oULAjrFl+y5YZKzAynPZVvN9H/kMkSh/USRUuvkj69zDsbLN6TsPUi+0Y6k735lurY5b2/7ObGtEsULGnesaBy1eKZL75kFqftdHb/adnJlDv8kduCVxzZM/OQ27Fmo20ZWy5QvCqbc5hNMO5RxSsou2R2Opts2+lB6JraZrLbC9Tw5y1pb0TluVbhRjRj+xkbzwEgOPLKA4blTzbZZFzi0kg442n7CkmaN1fUvNyBK59wAy3+TBHpcNuZxzR4QINtERdgrPtxxx0XtsUrcLjzxhsB+IrhSYQMeJiHg2W6RgkDX3rppYy34f4AAXLuDGT7l7x1E0XOW4X55bbFCA7GXPBAJsKk8Oyzz8ZNpIvMKjxjieHLL78MFM+VhBW5sGRUJAF+/vg5Dx4/iQkmthWXGesEVc9JLVthyG54U0M6BWqZXYWxD2SbezXknFKEVdI7AMvkFTm9xbxv8zRK76J5G+r7fF6iwe5x6623Ak5b4O3B4QkdMtaNXb1ENeXVRSd0edlo2045o+PxqMQwkE5yFdfNa91tW0FMoXkir8jNS2bnMGqMZ5cIGTPKlyFm4at0Nio3LLEDJNpptnS1n+ZQyG8S80hj+PvZz35GoIFSD45Pem8psdOm95YSCZbrBovsWpztFFksLoPVzTffzPBGOmqOkpzrh3c0VJ7DvP4n5GSsh/WYfybGWuTsutnpEqeXrF75vpHNUr+meY8Vjxg3vCwzvUuUaAWUruWxoBuq6cynnUscoPOaVd6GSh/+En1d4sy8XDbCWmPVSDSQdA7z9qhyVVluLYqc7prGqpEnP+Dzh/LnLbkXzQOEHNKyP29JwOlHP/oRV/6I83ZG2g+L8YwAY5BWWmmlWA08NsYQNl7qRpSBZThBj1/lTRAJ452OpMlF8oc//GFG0XOexEMNDKgmcMB8rlp5Bo93/HAs5NqV6EBIimcXufPGV4yfYYusyARfkRpPM2Y3x5Mdm2yyCXN4OovxZsQyWItBTYzIioP2E2uxYssi8/DYj3/8Y6DIFRdvnJrzVBWXzbx/kUwmtpXNW8M0D03wI0bYMhaANHmRDLEbkg0PieQVmUTQY1wlV+mcUKLBuvGWNUoMoKVfID4NEY/o80ulHKsS2yJMwGlNNm+8iTO8azPxVVyeC1dOC+KjN3F+ywlCRaQZXgbJHVQqmtAV0RYWTu8AiSK33BChKIpMjfNKLZ59ZWglD/4ce+yx4QnPhEbpXbRlNjqfyS7R4cvkSYE2wuAj2jV7C0OQQtshb5Xv6nnVRIySSo8a/DIrR4XwMVEXee003RhJNi8b6XZKKJMnrb7yla/w1tiY1fRE6Rzmte68VlC6yHk5jOUiNMnrZr773e/SIceZedlggcoN83YAwj2JLjfRTmMpBn+ik9bNoYfVOS1m4DrXIfFQzoGbJ13zfHgWN9Ex5u0t6d0vb622e0teOy3XXbC5vAQTOWStEt1g5bsWN0U4DoaXQXK5ztBLDuscx8OGWuaQrxIH6HSR8/qfWK4xHdbjWhVOtDy95JYM7x3nNCy8d5znfE8//XSOaxxN5ptvvryeJJxQ5e0bFea5IalOWjf+nOBRtJ/85Cc8tszNOcrII1Hx0Jm3S5CHvJKmdwlWbHksKKea3lbLzKc7GbJX4gCdaFaJTqbc4S99ZMw7My+XjXIa6arMy2Fij+KrclXZcq30STvbCn8tu6YS+8b/T2/I/h/KQMOQGZvdwRMg5LHZZpuFey9jzR1HI55KLfLMxVhTrs3ynZys1AahNwVhb+QNtVykcXrXmy3WbysajqlObd1j4qrxwlwR8fBpiLkPQjE7OawPQv4HIQ+27mprocTBZdCaVYUgJTQq3Hofk2rZNY2ORg0fnejjzuSmh0KAH49kHFSJKAMxY94kSlwz/uDoUJTXTNZYgIcIvvjFLxpl6KSKNexEz3UVGASB0of1Qci8eairgAeXbM2OpkZe1zQ6Go5oyLYCp2suEAbuhkJuueWW2Wdq0iXnlde8fYPLubnnnvtLX/oSv1eSXn7Ev/WuyIjvABa/xgK27hpXbvGinXHGGeGFSoTseY6JR5GLr1vtkqUP69Vmox6p2br7W4+D06z661CPrds1hXo00FCP/dlSKDBAAp6sDFBlmBUFKhWwdVfKaWIKDJCArXuAKsOsKFALAR+dqEU1WggFFFBAAQUUUEABBRRQQAEFBkPAQMNg1IO5UEABBRRQQAEFFFBAAQUUUKAWAgYaalGNFkIBBRRQQAEFFFBAAQUUUECBwRAw0DAY9WAuFFBAAQUUUEABBRRQQAEFFKiFgIGGWlSjhVBAAQUUUEABBRRQQAEFFFBgMAQMNAxGPZgLBRRQQAEFFFBAAQUUUEABBWohYKChFtVoIRRQQAEFFFBAAQUUUEABBRQYDAEDDYNRD+ZCAQUUUEABBRRQQAEFFFBAgVoIGGioRTVaCAUUUEABBRRQQAEFFFBAAQUGQ8BAw2DUg7lQQAEFFFBAAQUUUEABBRRQoBYCBhpqUY0WQgEFFKha4E9/+tNDDz1Udaqmp8B/PP/883vttZcQCiiggAL9FbA37q9/7bduoOH/qviOO+7YZpttLrzwwtrXtwVUYHgFBqSdDkg2ul2P77777t13373AAgt0e0N56V9xxRV0y1dffXXeAp3PH5Gq7BzKFLohcNppp7GHP/roo3mJ77TTTixQbUSmB80qrzjOV6CtwD333MM+f+6557ZdMm8Be/U8mfrN70YPWT+lvpdo8j322KPvmag8A9ddd90777wz88wzF0x5zjnnXGGFFZ544olFFlmk4CoupoACeQIEyGeddda8b0vP76SdjrVPCJlsuVYn2Shd9t6v+Oc//3mhhRaaa665er/psMXXX3/9L3/5y5prrjnbbLNl89CyUrILFJ8ekaosDlJkyUpa9zTTTLPKKqsU2VyNl/nwhz887bTTsnvPNNNMLYvJzv+5z33u4Ycf/uhHP9pygRIz85pViaRcpX4ClbTuTlhmn332T37yk+zzSyyxRLl0hqVXTxzIEl+VM0kn2LPeOJ2NEkXrRg9ZIhuukhao54iGf773ly653yqgwOgIlOsTyq1VA9VJkyZxX+gjH/lIH8sSYhzNkY6RrZQ+1oWbro1AXrOqTQEtiAJDIZA4kCW+Kle0yhMc6myUy7xrlRYYX3rN/q742muvnXLKKQ8++OBLL73EgXPTTTeN4U/GaDA2IWaPO6u/+MUv4sfEBEOFzzzzTEbqTj/99J/5zGc+9alPxYW5sfbHP/7xmWeeIdq61lprrbjiinx14IEHTj755MQC//rXv2677bY33HADi/EttyD49u23377ooouuvfbaF198kQjr2muv/bGPfSwm6IQCCrQUOP/88xk2+YEPfGC33XYLC+y5556PP/74hhtuSKtkTl47rbxPSPckedlINPy9996bYdLrr7/+euutR0Hol3gDwrrrrrvBBhu0pIgz77zzzt///vcgzDDDDHQvTGy88cZ8myjy9ttvv8wyy7zxxht33XUXfRT90qqrrhoTbDsxceLE5ZZbru1icYFu5HCWWWZhN2i42ZuulJif5om8HLJkXlWW4+WU7pxzzrn++usZVcdN++mmm+6ss87iAEF1JPaN5gzXeA7jXV944YV55pln9913bygmB03G9r/yyiuMpllwwQW5t9kwnqVh+dJH4UTlsomW2XjggQf222+/2GDDrkhZyCqrEJg75JBDFl544a9//etnn302H5deeukttthiiimmSG/rzTffPOmkk2hxU0899fLLL0//MOWUUzYUs+FjJztSy2bVkL4fFSgnkNjVE4ck9ufzzjuPs2UOWAzeWWedddpuvfR5QqLtJJpwYq1EVhMaiQNZ4qtENhK8iQTJfKI3bnnhwyqJbSU0EtnIk3/kkUcSXW5iW+XOtRLHbraVp5GoFNZqeShJ5LyeX3Hnaqj/OJkjrHDwwQdnS8E7zO67777snLbTTz311M4770yU4a233iKgsP/++/NvWOvKK688+uijObnnq8cee+zII4+8+OKLw1escuONN3LOxAlTOD1ixfAV/SBfccLEXvjcc89ddtllfGybDRdQoAYC999/fyelOPHEE1mdIb4cz/iX6RNOOCEkmGincYtV9QkkmNeTJLKRaPhERU8++eSYT06qjjnmmPgxb4JnVn/1q19xxKX/oT/hCvb4449vWLi5yPQ5O+ywA9FPznWYPuCAA55++umGtfI+cuF91FFH8W/eAg3ze5zDvEppyFX2YyKHiaqMKYyJl4tG9gHq+tVXX7388st33XVX6i4kldg34rYGf6LD1h0LGBt1nMOwbQ6g1AgHTY6/RxxxRDwKx2WaJzo8CjdXbiIb3DYgihTzwK5I9CF+ZIL880fUIHRc2a+Ybt7WJZdcwpn0TTfdxPLsM5wnNLfuZqh67EgNOH4cBIGqWnfzrp44JJ166qk0K9odx8Tbb7/9oIMOyrayPJZy5wlt207LJtx2rbxMhvnNGsxPHMjyvkpkI8Gb3lbIYXMnk7jwSW8rJNjy37xyhYVbyrftclm3OfPlzrUSx+6ERqJSEoeSlj51nTmsIxq4tuemAe8qo2NivMD48RUU5BPv/RFP4hbKsssuyzl9uJdy7733co9i3LhxfMVNmK233vqwww5bY401+LjYYouxJBO8Mi08cTrHHHPwkXN0dj4uDJiO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">
+---
+
+## The ecosystem, in one line: everyone cares but in different directions
 
 A pattern that showed up repeatedly was this:
 
-- Parents want outcomes, safety, and social validation.
-    
+- Parents want outcomes, safety, and social validation. 
 - Teachers want manageable classrooms and to focus on the “top slice.”
-    
 - Schools want measurable progress + reputation protection.
-    
 - Kids want autonomy, meaning, and relief from pressure - but also get swayed by trends.
-    
 
-This creates a system where **everyone is “trying,” but the system doesn’t naturally reward the right behaviors.**
+This creates a system where everyone is “trying”
 
 ---
 
-## 1) Parents: more progressive - but only until grades drop
+<strong>## 1) Parents: more progressive - but only until grades drop</strong>
 
-One of the most interesting shifts we observed: **parents are more open than before** to kids exploring interests and passions.
+One of the most interesting things:parents are open to kids exploring interests and passions.But this openness has a boundary.</p><p><br></p><p>I've always believed that even though my parents had expectations, they rarely said it out loud. If you would ask them- they would have said that me and my brother were open to pick our careers. Which in all honesty- we were. So were all my cousins. What morning discussions would include at all these houses were even though stories of what other kids have achieved.
 
-But this openness has a clear boundary.
+<strong>### What parents say vs what parents do</strong>
 
-### What parents say vs what parents do
+- Parents like the idea of passion and holistic growth.
+- Parents also care deeply about status - and the moment academics drop, they start panicking
+- Most are willing to spend on both academics and co-curriculars, but co-curricular tends to become “second priority” the minute academics feel threatened.</p><p>- In 2 very distinct cases they were approving of the child's career- where they have given up on child's academics or where the child is great at academics and hence has earnt the right to pick
 
-- Parents _like the idea_ of passion and holistic growth.
-    
-- Parents also care deeply about **status** - and the moment academics drop, they start panicking
-    
-- Most are willing to spend on **both academics and co-curriculars**, but co-curricular tends to become “second priority” the minute academics feel threatened.
-    
-
-### A subtle pattern: protective, not proactive
-
-Parents are deeply involved emotionally, but not always proactive structurally.
+<strong>### Parents are deeply involved emotionally but not always proactive </strong>
 
 - They listen to their kids.
-    
 - They are protective about parenting style and school choices.
+- But many don’t intervene before things go wrong (the child lacking in studies) - they react after the alarm.
     
-- But many don’t intervene _before_ things go wrong - they react _after_ the alarm.
-    
-
-In practice, this means parent behavior is often **late-stage**: action happens when marks fall, and not when motivation falls.
+In practice, this means parent behavior is often late-stage: action happens when marks fall and not when motivation falls.
 
 ---
 
-## 2) Teachers: group classes are built for the top 5%
+<strong>## 2) Teachers: group classes are built for the top 5%</strong>
 
-A teacher insight we heard repeatedly (sometimes explicitly, sometimes implied):
+A teacher insight I heard repeatedly (sometimes explicitly, sometimes implied) is that the classroom group setting does not work for most students.
 
-> Group teaching is designed to move the class forward - not to pull everyone up.
-
-### The classroom reality
-
-- **Group classes disproportionately serve the top performers.**
-    
+<strong>### The classroom reality</strong></p><p>
+- Group classes disproportionately serve the top performers.
 - The remaining majority starts lagging behind.
-    
 - Once a student falls behind, recovery is hard without extra support - and that’s where tuition fills the gap.
     
 
-### The vicious loop: tuition + disengagement
+<strong>### The vicious loop: tuition + disengagement</strong>
 
 A painful loop shows up:
 
 - Students go to tuition because school isn’t enough.
-    
 - Once tuition becomes the “real learning,” school feels pointless.
-    
 - When students disengage, teachers get less rewarded for effort.
-    
 - Teachers then focus even more on the few students who respond.
     
+It’s an incentive + bandwidth problem.
 
-It’s an **incentive + bandwidth problem.**
-
-### Teachers and AI: cautious acceptance, real fear
+<strong>### Teachers and AI: cautious acceptance, real fear</strong>
 
 Another tension: teachers don’t “hate tech” - but many fear AI reduces thinking.
 
 - There’s skepticism that AI will “do the work” for children.
-    
 - Some schools/teachers are okay with AI if it’s positioned as scaffolding
-    
-- The bigger issue is **how to integrate without breaking learning integrity.**
-    
-
+- The bigger issue is how to integrate without breaking learning integrity.</p><p>
 ---
 
-## 3) Schools: “what gets measured gets managed” (and that’s both good and bad)
+<strong>## 3) Schools: “what gets measured gets managed” (and that’s both good and bad)
+</strong>
+Schools sit at the center of the system - and they operate on hard constraints:
 
-Schools sit at the center of the system - and they operate on **hard constraints**:
-
-- reputation
-    
+- reputation 
 - academic outcomes
-    
 - parent expectations
-    
 - compliance and operational feasibility
-    
 
-### Parents are “inactive” - until they’re not
+<strong>### Parents are “inactive” - until they’re not</strong>
 
 Schools often perceive parents as inactive in the learning process (day-to-day), and believe that parents are not playing their role
 
-### Schools label kids as “fragile”
+<strong>### Schools label kids as “fragile”</strong>
 
 A phrase that came up often (in different forms) was that kids today are seen as:
 
 - more emotionally sensitive
-    
 - less resilient
-    
 - more psychologically demanding
-    
 
-And whether or not that’s fair, it changes what schools are being forced to build: **counselling, emotional support, career guidance** - all of which are now becoming mainstream rather than “nice to have.”
+And whether or not that’s fair, it changes what schools are being forced to build: <strong>counselling, emotional support, career guidance</strong> - all of which are now becoming mainstream rather than “nice to have.”
 
-### Marks still dominate the system
+<strong>### Marks still dominate the system</strong>
 
 Even when schools talk about holistic development, the operational reality is:
 
-- “numbers” are still the cleanest way to prove progress
-    
-- hard data is what parents respond to
-    
-- schools need measurable structures (submissions, engagement scores, deadlines, etc.)
-    
+- “numbers” are still the cleanest way to prove progress    
+- hard data is what parents respond to    
+- schools need measurable structures (submissions, engagement scores, deadlines, etc.)    
 
 So the system still leans heavily toward what can be tracked - even if it’s not the full picture.
 
-### A notable emerging theme: policy-driven FOMO
+<strong>### A notable emerging theme: policy-driven FOMO</strong>
 
 Hands-on learning, mentorship models, “try things early” initiatives - these are increasingly being pulled into schools, sometimes because:
 
 - parents want them
-    
 - colleges signal they matter
-    
 - other schools are doing it (and competition forces adoption)
     
-
 ---
 
-## 4) Kids: more self-directed, more distracted, more emotionally loaded
+<strong>## 4) Kids: more self-directed, more distracted, more emotionally loaded</strong>
 
-Kids were the most nuanced stakeholder — because their behavior looks contradictory unless you separate intent from environment.
+Kids were the most nuanced stakeholder - because their behavior looks contradictory.
 
-### More career-aware (but trend-driven)
+<strong>### More career-aware (but trend-driven)</strong>
 
 Kids today are:
 
-- more aware of careers early
-    
+- more aware of careers early  
 - more exposed to non-traditional success stories
-    
 - heavily influenced by social media narratives
     
-
 This creates two realities at once:
 
 - some kids genuinely want to explore and build
-    
 - others adopt “I don’t need to study” as a coping strategy - even when they know it’s not fully true
     
 
-### Self-learning is real — but not always academic
+<strong>### Self-learning is real - but not always academic</strong>
 
 Kids are learning online constantly:
 
 - skills, hobbies, knowledge
-    
 - but often outside the academic structure
     
-
-So learning isn’t dead. It’s just moving to environments that feel **faster, more rewarding, and less judgmental.**
-
-### Interest hinges on teachers (more than we expected)
+So learning isn’t dead. It’s just moving to environments that feel <strong>faster, more rewarding, and less judgmental.
+</strong>
+<strong>### Interest hinges on teachers (more than we expected)</strong>
 
 This came through strongly:
 
 - a good teacher can make a subject lovable
-    
 - a bad teacher can make a strong student average
-    
 - interest is not fixed - it’s highly context-dependent
-    
 
-### Long school routines + emotional needs are increasing friction
+<strong>### Long school routines + emotional needs are increasing friction</strong>
 
 Long school days + pressure + structured routines + constant evaluation means kids often carry:
 
 - stress
-    
 - identity anxiety (“am I good enough?”)
-    
 - emotional needs that schools/parents weren’t trained to handle historically
     
-
 ---
 
-## The big system insight: misaligned incentives create predictable failure points
+<strong>## What this means for anyone building in Indian education</strong>
 
-If we had to summarize the entire research in one sentence:
+Based on what I heard, a few opportunity directions feel especially real:
 
-**The education system doesn’t fail because people don’t care - it fails because incentives don’t line up across stakeholders.**
-
-Examples:
-
-- Parents want “passion” _and_ consistent marks.
-    
-- Teachers want to help everyone, but are rewarded for top performance and classroom control.
-    
-- Schools want holistic development, but must prove outcomes through numbers.
-    
-- Kids want autonomy, but operate inside rigid structures and social pressure.
-    
-
-This is why many products in education struggle:
-
-- they pick one stakeholder and ignore the others
-    
-- or they try to change behavior without addressing incentives
-    
-- or they build something “idealistic” that collapses under operational constraints
-    
-
----
-
-## What this means for anyone building in Indian education
-
-Based on what we heard, a few opportunity directions feel especially real:
-
-### 1) Products that align stakeholders
+<strong>### 1) Products that align stakeholders</strong>
 
 If the parent/school/teacher loop isn’t addressed, adoption becomes fragile.
 
-### 2) Tools that support teachers at scale (without adding admin work)
+<strong>### 2) Tools that support teachers at scale (without adding admin work)</strong>
 
 Teachers don’t need another dashboard. They need systems that reduce load and help them intervene earlier.
 
-### 3) Measurable holistic development (beyond marks) - but still “trackable”
+<strong>### 3) Measurable holistic development (beyond marks) - but still “trackable”</strong>
 
 Schools _want_ holistic frameworks, but they need them in measurable formats that parents can trust.
 
-### 4) Career guidance and counselling are no longer niche
+<strong>### 4) Career guidance and counselling are no longer niche</strong>
 
 This is becoming a core layer of schooling - especially as emotional load rises and career paths diversify.
 
-### 5) Structured “hands-on” learning that isn’t performative
+<strong>### 5) Structured “hands-on” learning that isn’t performative</strong>
 
 Mentorship, projects, try-before-you-choose models - these are moving mainstream, but need better scaffolding and credible measurement.
 
 ---
 
-## Closing thought
+<strong>## Closing thought</strong>
 
-Doing this research was a good reminder that education in India isn’t a “market.” It’s a **social system.** People’s hopes, anxieties, identities, and status are all entangled with learning.
+Doing this research was a good reminder that education in India isn’t a “market.” It’s a <strong>social system</strong>. People’s hopes, anxieties, identities, and status are all entangled with learning.
 
 And that’s why the bar is higher here:  
 If you want to build something meaningful in this space, you can’t just build for engagement.  
-You have to build for **trust, incentives, and real-world constraints** - across all four stakeholders.
-
----
+</p>
