@@ -242,6 +242,7 @@ permalink: /admin/
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked@15.0.7/marked.min.js"></script>
     <script>
         var quillEssay, quillAbout, activeQuill;
         var adminPassword = '';
@@ -490,7 +491,12 @@ permalink: /admin/
                     document.getElementById('post-date').value = fm.date || '';
                     document.getElementById('post-excerpt').value = fm.excerpt || '';
                     document.getElementById('post-tags').value = (fm.tags || []).join(', ');
-                    quillEssay.root.innerHTML = data.content || '';
+                    // If content looks like markdown (no HTML tags), convert it
+                    var postContent = data.content || '';
+                    if (postContent && !postContent.match(/<[a-z][\s\S]*>/i)) {
+                        postContent = marked.parse(postContent);
+                    }
+                    quillEssay.root.innerHTML = postContent;
 
                     // Set edit mode
                     editingPost = { path: data.path, sha: data.sha };
