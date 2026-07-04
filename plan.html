@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>2026 Plan · Letters by G</title>
+    <script>if (localStorage.getItem('theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark');</script>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #ffffff; --text: #111111; --text-secondary: #555555;
+            --text-muted: #888888; --border: #dddddd; --border-subtle: #f0f0f0;
+            --surface: #fafafa; --nav-bg: rgba(255, 255, 255, 0.85); --accent: #c2410c;
+        }
+        [data-theme="dark"] {
+            --bg: #1a1814; --text: #e0ddd8; --text-secondary: #9a9590;
+            --text-muted: #5e5a55; --border: #2c2924; --border-subtle: #241f1a;
+            --surface: #221e19; --nav-bg: rgba(26, 24, 20, 0.85); --accent: #e8875a;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'IBM Plex Mono', monospace; background: var(--bg); color: var(--text); line-height: 1.6; transition: background-color .3s, color .3s; }
+
+        /* Header */
+        .hdr { position: sticky; top: 0; z-index: 50; background: var(--nav-bg); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-subtle); padding: 1rem 1.5rem; display: flex; align-items: center; justify-content: space-between; }
+        .hdr a.home { font-size: .88rem; font-weight: 600; color: var(--text); text-decoration: none; letter-spacing: .02em; }
+        .hdr .right { display: flex; gap: .75rem; align-items: center; }
+        .theme-toggle { width: 28px; height: 28px; border-radius: 50%; border: 1px solid var(--border); background: transparent; color: var(--text-secondary); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: .8rem; }
+        .theme-toggle:hover { border-color: var(--text); color: var(--text); }
+
+        /* Login */
+        #login { max-width: 320px; margin: 15vh auto; padding: 0 2rem; text-align: center; }
+        #login h1 { font-size: 1.1rem; font-weight: 600; margin-bottom: 2rem; }
+        #login input { width: 100%; padding: .7rem 1rem; font-family: inherit; font-size: .85rem; background: var(--bg); color: var(--text); border: 1px solid var(--border); border-radius: 2px; margin-bottom: 1rem; outline: none; }
+        #login input:focus { border-color: var(--text); }
+        #login button { width: 100%; padding: .7rem 1rem; font-family: inherit; font-size: .85rem; background: var(--text); color: var(--bg); border: none; border-radius: 2px; cursor: pointer; }
+        .err { color: #c0392b; font-size: .72rem; min-height: 1rem; }
+
+        /* App */
+        #app { display: none; max-width: 760px; margin: 0 auto; padding: 2rem 1.5rem 6rem; }
+        .title { font-size: 1.5rem; font-weight: 600; letter-spacing: -.01em; }
+        .sub { font-size: .78rem; color: var(--text-muted); margin-top: .3rem; }
+
+        /* Overall progress */
+        .overall { margin: 1.6rem 0 2rem; }
+        .bar { height: 8px; background: var(--border-subtle); border-radius: 99px; overflow: hidden; }
+        .bar > span { display: block; height: 100%; background: var(--accent); border-radius: 99px; transition: width .3s; }
+        .overall .lbl { display: flex; justify-content: space-between; font-size: .72rem; color: var(--text-muted); margin-bottom: .45rem; }
+
+        /* Section cards */
+        .card { border: 1px solid var(--border); border-radius: 6px; margin-bottom: .8rem; overflow: hidden; background: var(--bg); }
+        .card.always { background: var(--surface); }
+        .card.current { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+        .card > .head { display: flex; align-items: center; gap: .7rem; padding: .85rem 1rem; cursor: pointer; user-select: none; }
+        .card > .head:hover { background: var(--surface); }
+        .card > .head .wk { font-size: .68rem; font-weight: 600; color: var(--accent); letter-spacing: .04em; min-width: 66px; }
+        .card > .head .nm { font-size: .84rem; font-weight: 500; flex: 1; }
+        .card > .head .nm small { display: block; font-size: .68rem; color: var(--text-muted); font-weight: 400; }
+        .card > .head .cnt { font-size: .68rem; color: var(--text-muted); font-variant-numeric: tabular-nums; }
+        .card > .head .chev { font-size: .7rem; color: var(--text-muted); transition: transform .2s; }
+        .card.open > .head .chev { transform: rotate(90deg); }
+        .card .body { display: none; padding: .3rem 1rem 1rem; border-top: 1px solid var(--border-subtle); }
+        .card.open .body { display: block; }
+        .minibar { height: 4px; background: var(--border-subtle); border-radius: 99px; margin: .7rem 0 .2rem; overflow: hidden; }
+        .minibar > span { display: block; height: 100%; background: var(--accent); }
+
+        /* Items */
+        label.item { display: flex; align-items: flex-start; gap: .6rem; padding: .42rem .1rem; font-size: .82rem; cursor: pointer; }
+        label.item input { appearance: none; -webkit-appearance: none; width: 16px; height: 16px; min-width: 16px; margin-top: .18rem; border: 1.5px solid var(--border); border-radius: 3px; cursor: pointer; position: relative; }
+        label.item input:checked { background: var(--accent); border-color: var(--accent); }
+        label.item input:checked::after { content: '✓'; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: #fff; font-size: .7rem; }
+        label.item span { transition: color .15s; }
+        label.item input:checked + span { color: var(--text-muted); text-decoration: line-through; }
+        label.item .star { color: var(--accent); }
+
+        .footer { margin-top: 2.5rem; font-size: .68rem; color: var(--text-muted); line-height: 1.7; }
+        .footer a { color: var(--text-secondary); }
+        .btn-reset { font-family: inherit; font-size: .68rem; background: transparent; border: 1px solid var(--border); color: var(--text-muted); padding: .3rem .6rem; border-radius: 3px; cursor: pointer; margin-top: .8rem; }
+        .btn-reset:hover { border-color: #c0392b; color: #c0392b; }
+    </style>
+</head>
+<body>
+    <div class="hdr">
+        <a class="home" href="/">← Letters by G</a>
+        <div class="right">
+            <button class="theme-toggle" onclick="toggleTheme()" title="Theme">◐</button>
+        </div>
+    </div>
+
+    <div id="login">
+        <h1>2026 plan</h1>
+        <form onsubmit="handleLogin(event)">
+            <input type="password" id="pw" placeholder="password" autofocus>
+            <button type="submit">enter</button>
+            <div class="err" id="loginErr"></div>
+        </form>
+    </div>
+
+    <div id="app"></div>
+
+    <script>
+    // ─── Theme ───
+    function toggleTheme() {
+        var d = document.documentElement.getAttribute('data-theme') === 'dark';
+        if (d) { document.documentElement.removeAttribute('data-theme'); localStorage.setItem('theme','light'); }
+        else { document.documentElement.setAttribute('data-theme','dark'); localStorage.setItem('theme','dark'); }
+    }
+
+    // ─── Auth (reuses /api/login; skipped on localhost/file for preview) ───
+    var LOCAL = location.protocol === 'file:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+    async function handleLogin(e) {
+        e.preventDefault();
+        var pw = document.getElementById('pw').value;
+        var err = document.getElementById('loginErr');
+        try {
+            var res = await fetch('/api/login', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ password: pw }) });
+            if (res.ok) { sessionStorage.setItem('planAuth','1'); reveal(); }
+            else { err.textContent = 'wrong password'; }
+        } catch (_) { err.textContent = 'network error'; }
+    }
+    function reveal() {
+        document.getElementById('login').style.display = 'none';
+        document.getElementById('app').style.display = 'block';
+        render();
+    }
+
+    // ─── Plan data ───
+    // Each week: { id, wk, date, name, items:[...] }  ·  "★ " prefix marks a milestone.
+    var ALWAYS = [
+        { id:'daily', wk:'DAILY', date:'every day', name:'The Daily Engine', items:[
+            '10k steps + a podcast (news / geography / history)',
+            'Read 50 pages',
+            '1 Twitter post',
+            'Roller skate (aim 4×/week)'
+        ]},
+        { id:'weekly', wk:'WEEKLY', date:'fixed slots', name:'Weekly Rhythms', items:[
+            'Sun — read 1 article + write 3 lines',
+            'Wed — publish 1 lettersbyg article',
+            'Sat — cook 1 new recipe',
+            'Tue — tennis (→ 30 days played)',
+            'Log rolling counters: movies / songs / artists / new people',
+            'Every 2 weeks — talk to a stranger-profession'
+        ]}
+    ];
+    var WEEKS = [
+        { wk:'W1', date:'Jul 6', name:'Clear the deck', items:[
+            '★ Complete 2025 Reflections + 1-pager synthesis',
+            '★ Start Littlewise shutdown (single entity)',
+            'Set up the Daily Engine + complete Notion profile',
+            'Join Pilates', 'Watch a sunrise', 'Feed a dog', 'Feed a cat',
+            'Book: 1984 (start)'
+        ]},
+        { wk:'W2', date:'Jul 13', name:'Financial adulting', items:[
+            '★ Health insurance', '★ Open current account', '760+ credit score plan',
+            'Book the mutation test', 'Clean mailbox + laptop',
+            '★ List Littlewise inventory for sale', 'Tool: Figma prototyping',
+            'Letter to my future self', 'Donate blood', 'Learn CPR'
+        ]},
+        { wk:'W3', date:'Jul 20', name:'Body + roots', items:[
+            'Marathon training begins', 'Learn: Rubik’s cube',
+            'Draw: Leaf', 'Draw: Flower', 'Plant a tree', 'Create family tree',
+            'Donate books + clothing', 'Book: Man’s Search for Meaning'
+        ]},
+        { wk:'W4', date:'Jul 27', name:'Kitchen + craft', items:[
+            'Cook: Mushroom Lasagna', 'Spices & flavours deep-dive', 'Sew: Glove',
+            'Draw: Cactus', 'Draw: Coffee cup', 'Talk to: Journalist',
+            'Make matcha', 'Tea tasting', 'Recreate a childhood recipe'
+        ]},
+        { wk:'W5', date:'Aug 3', name:'Tools sprint 1', items:[
+            'Tool: Meta Marketing', 'Tool: Google Marketing',
+            'Start Personal Task Scheduler (vibe code)',
+            'Paint: Starry Night', 'Draw: Starry Night', 'Book: Outlive',
+            'Learn about stars & galaxies', 'Watch sunrise & sunset same day'
+        ]},
+        { wk:'W6', date:'Aug 10', name:'South travel loop 🩷', items:[
+            '★ Trip: Coorg + Tirupati Balaji (pilgrimage)',
+            'Photography masterclass', 'Photo: Mountain', 'Photo: Sunrise',
+            'Stand under a waterfall', 'Climb to the top of a tree',
+            'Book: The Lean Startup'
+        ]},
+        { wk:'W7', date:'Aug 17', name:'Tools sprint 2', items:[
+            'Tool: Reddit Marketing', 'Tool: Twitter Marketing', 'Tool: Micro-influencers',
+            'Cook: Tomato Pasta', 'Paint: Sunset', 'Paint: Peacock',
+            'Talk to: Social worker', 'Coin a word', '1000-piece jigsaw puzzle',
+            'Book: Freakonomics'
+        ]},
+        { wk:'W8', date:'Aug 24', name:'Automation', items:[
+            'Tool: Zapier', 'Tool: n8n', 'Tool: Clay', 'Tool: Gamma',
+            'Violin: Twinkle Twinkle', 'Violin: Ode to Joy', 'Sew: Scarf',
+            'Make ice cream', 'Rage room', 'Win a game of Monopoly',
+            'Book: 80/20 Principle'
+        ]},
+        { wk:'W9', date:'Aug 31', name:'Marketing meets making', items:[
+            '★ Matchmaking: set up 2 of 5 people', 'Photo editing class', 'Photo: Rain',
+            'Draw: Eye', 'Draw: Face', 'Talk to: Anthropologist', 'Book: No Rules Rules'
+        ]},
+        { wk:'W10', date:'Sep 7', name:'City-stay 1', items:[
+            '★ Live in new city #1 (2–3 week base shift)', 'Basics of music theory',
+            'Explore 3 new songs', 'Eat alone at a restaurant',
+            'Meaningful conversation with a stranger', 'Share a cab with a stranger',
+            'Book: The Hard Things About Hard Things'
+        ]},
+        { wk:'W11', date:'Sep 14', name:'Trek 1', items:[
+            '★ Trek #1', 'Trip: Darjeeling', 'Photo: Snowfall', 'Photo: Beach',
+            'Fly a kite', 'Make a snowman (if altitude)', 'Book: Wuthering Heights'
+        ]},
+        { wk:'W12', date:'Sep 21', name:'Build + apply', items:[
+            '★ Ship Personal Task Scheduler v1', '★ Apply to South Park Commons',
+            'Paint: Beach', 'Paint: Sunflower', 'Talk to: Diplomat',
+            'Go on a blind date', 'Stay up all night talking',
+            'Book: What They Don’t Teach You at HBS'
+        ]},
+        { wk:'W13', date:'Sep 28', name:'Skills up', items:[
+            'Learn French (start streak + 1 class)', 'Learn driving (book lessons)',
+            'Cook: Crispy Greek Tomato Fritters', 'Violin: Can’t Help Falling in Love',
+            'Book: The Republic'
+        ]},
+        { wk:'W14', date:'Oct 5', name:'Signature self', items:[
+            '★ Get a tattoo', '★ Signature neck chain', '★ Signature earrings',
+            'Professional photo shoot', 'Makeup lesson', 'Draw: Swan', 'Paint: Bloom',
+            'Book: A Farewell to Arms'
+        ]},
+        { wk:'W15', date:'Oct 12', name:'City-stay 2', items:[
+            '★ Live in new city #2', 'Start DJ course OR Singing course',
+            'Paint: Strawberry', 'Paint: Mango', 'Talk to: Psychologist',
+            'Meet someone famous', 'Attend a gallery opening', 'Book: A Passage to India'
+        ]},
+        { wk:'W16', date:'Oct 19', name:'Bold social', items:[
+            '★ Enter tennis tournament / ladder', 'Matchmaking: set up people 3–4 of 5',
+            'Photo: Kid crying', 'Photo: Falling in love', 'Karaoke in public',
+            'Perform on a stage', 'Meet Rach 🩷', 'Book: The Awakening'
+        ]},
+        { wk:'W17', date:'Oct 26', name:'Hands + wood', items:[
+            '★ Make a wooden shelf', 'Sew: Sweater', 'Decorate a blank t-shirt',
+            'Knit something', 'Cook: Parmesan Roasted Zucchini',
+            'Make a font from handwriting', 'Make a piece of clothing for yourself',
+            'Book: The Second Sex (start)'
+        ]},
+        { wk:'W18', date:'Nov 2', name:'Marathon', items:[
+            '★ Run the marathon 🏅', 'Walk on hot coal', 'Ride in a hot air balloon',
+            'Talk to: Nurse', 'Book: To Kill a Mockingbird'
+        ]},
+        { wk:'W19', date:'Nov 9', name:'North loop', items:[
+            '★ Trip: Agra (world wonder) + Varanasi', 'Rajasthani + Gujarati + Sindhi food',
+            'Photo: Sunset', 'Visit praying places of all religions',
+            'Attend a small-town festival', 'Book: Fear of Flying'
+        ]},
+        { wk:'W20', date:'Nov 16', name:'Water + wild', items:[
+            '★ Trek #2 + Udaipur', 'Learn snorkelling', 'Learn surfing',
+            'Release a baby turtle', 'Paint: Autumn', 'Paint: Snowfall',
+            'Book: Social Reform or Revolution'
+        ]},
+        { wk:'W21', date:'Nov 23', name:'City-stays 3 & 4', items:[
+            '★ Live in new city #3 / #4', 'Cruise experience', 'Fly Emirates',
+            'Ride a subway', 'Talk to: Judge', 'Talk to: Deliveryman', 'Book: Black Hole'
+        ]},
+        { wk:'W22', date:'Nov 30', name:'People + gratitude', items:[
+            '★ Talk to a unicorn founder for advice', 'Mentor kids (toward 10 mentored)',
+            'Thank-you letters to all friends', 'Forgive someone', 'Surprise someone',
+            'Thank you in 10 languages', 'Book: The Gift of the Magi'
+        ]},
+        { wk:'W23', date:'Dec 7', name:'Quick-win blitz', items:[
+            'Message in a bottle', 'Perform a magic trick', 'Find someone with my name',
+            'Be in the newspaper', 'Teach a class', 'Basic sign language',
+            'Talk to: Fashion designer', 'Book: Hamlet'
+        ]},
+        { wk:'W24', date:'Dec 14', name:'Indulge + own', items:[
+            'Own LV / YSL / Prada (pick one)', 'Wine tasting', 'Try new alcohol',
+            'Cook: Strawberry cake', 'Violin: Viva la Vida', 'Design a room I love',
+            'Cover the bed in rose petals', 'Kiss in the rain', 'Book: Unreasonable Hospitality'
+        ]},
+        { wk:'W25', date:'Dec 21', name:'Festive cluster 🎄', items:[
+            '★ Christmas movie + slumber + monopoly + karaoke night',
+            'Trip: Santa Claus Town',
+            'Watch: Godfather, Serendipity, Inception, Erin Brockovich, Last Night',
+            'Make a snowman', 'A day without phone/tech', '24 hours of silence',
+            'Read all PG essays (marathon session)'
+        ]},
+        { wk:'W26', date:'Dec 28', name:'Year synthesis', items:[
+            '★ Complete 2026 Reflections + 1-pager', 'Blog on Cooking (10 recipes)',
+            'Finalize 5 movie reviews', 'Log final counts (books, people, songs, articles)',
+            '★ Confirm 20L+ in savings', '★ Confirm 760+ credit score',
+            'Fast for Janmashtami / Mahashivratri (mark the dates)'
+        ]}
+    ];
+    // Week start dates (Mon) for "current week" highlight
+    var WEEK_STARTS = ['2026-07-06','2026-07-13','2026-07-20','2026-07-27','2026-08-03','2026-08-10','2026-08-17','2026-08-24','2026-08-31','2026-09-07','2026-09-14','2026-09-21','2026-09-28','2026-10-05','2026-10-12','2026-10-19','2026-10-26','2026-11-02','2026-11-09','2026-11-16','2026-11-23','2026-11-30','2026-12-07','2026-12-14','2026-12-21','2026-12-28'];
+
+    // ─── Persistence ───
+    var STORE = 'plan2026';
+    function load() { try { return JSON.parse(localStorage.getItem(STORE) || '{}'); } catch (_) { return {}; } }
+    function save(s) { localStorage.setItem(STORE, JSON.stringify(s)); }
+    var state = load();
+    function slug(t) { return t.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,40); }
+    function key(secId, txt) { return secId + ':' + slug(txt); }
+
+    // ─── Current week ───
+    function currentIdx() {
+        var now = new Date();
+        var idx = 0;
+        for (var i = 0; i < WEEK_STARTS.length; i++) {
+            if (now >= new Date(WEEK_STARTS[i] + 'T00:00:00')) idx = i;
+        }
+        return idx; // defaults to 0 before the first week starts
+    }
+
+    // ─── Render ───
+    function sectionEl(sec, secId, isCurrent, open) {
+        var done = 0;
+        sec.items.forEach(function(it){ if (state[key(secId, it)]) done++; });
+        var pct = Math.round(done / sec.items.length * 100);
+        var card = document.createElement('div');
+        card.className = 'card' + (secId==='daily'||secId==='weekly' ? ' always' : '') + (isCurrent ? ' current' : '') + (open ? ' open' : '');
+
+        var head = document.createElement('div');
+        head.className = 'head';
+        head.innerHTML = '<span class="wk">' + sec.wk + '</span>' +
+            '<span class="nm">' + sec.name + (isCurrent ? ' &nbsp;·&nbsp; <span style="color:var(--accent)">this week</span>' : '') + '<small>' + sec.date + '</small></span>' +
+            '<span class="cnt">' + done + '/' + sec.items.length + '</span>' +
+            '<span class="chev">▸</span>';
+        head.onclick = function(){ card.classList.toggle('open'); };
+        card.appendChild(head);
+
+        var body = document.createElement('div');
+        body.className = 'body';
+        var mb = document.createElement('div'); mb.className = 'minibar';
+        var mbs = document.createElement('span'); mbs.style.width = pct + '%'; mb.appendChild(mbs); body.appendChild(mb);
+
+        sec.items.forEach(function(it){
+            var k = key(secId, it);
+            var star = it.indexOf('★') === 0;
+            var txt = star ? it.slice(1).trim() : it;
+            var lab = document.createElement('label'); lab.className = 'item';
+            var cb = document.createElement('input'); cb.type = 'checkbox'; cb.checked = !!state[k];
+            cb.onchange = function(){ state[k] = cb.checked; save(state); refreshCounts(); };
+            var sp = document.createElement('span');
+            sp.innerHTML = (star ? '<span class="star">★ </span>' : '') + txt;
+            lab.appendChild(cb); lab.appendChild(sp);
+            body.appendChild(lab);
+        });
+        card.appendChild(body);
+        return card;
+    }
+
+    function refreshCounts() {
+        // update all mini + head counts + overall without full re-render
+        var total = 0, done = 0;
+        WEEKS.forEach(function(sec){ sec.items.forEach(function(it){ total++; if (state[key(sec.wk, it)]) done++; }); });
+        var opct = total ? Math.round(done/total*100) : 0;
+        document.getElementById('obar').style.width = opct + '%';
+        document.getElementById('olbl').textContent = done + ' / ' + total + ' done · ' + opct + '%';
+        // refresh visible cards
+        document.querySelectorAll('.card').forEach(function(card){
+            var secId = card.getAttribute('data-sec');
+            var sec = card.__sec;
+            if (!sec) return;
+            var d = 0; sec.items.forEach(function(it){ if (state[key(secId, it)]) d++; });
+            card.querySelector('.cnt').textContent = d + '/' + sec.items.length;
+            card.querySelector('.minibar > span').style.width = Math.round(d/sec.items.length*100) + '%';
+        });
+    }
+
+    function render() {
+        var app = document.getElementById('app');
+        var cur = currentIdx();
+        var total = 0, done = 0;
+        WEEKS.forEach(function(sec){ sec.items.forEach(function(it){ total++; if (state[key(sec.wk, it)]) done++; }); });
+        var opct = total ? Math.round(done/total*100) : 0;
+
+        app.innerHTML =
+            '<div class="title">2026 — The Ambitious Second Half</div>' +
+            '<div class="sub">26 weeks · 6 Jul → 31 Dec · aim high, miss > never try</div>' +
+            '<div class="overall"><div class="lbl"><span id="olbl">' + done + ' / ' + total + ' done · ' + opct + '%</span><span>weeks only</span></div>' +
+            '<div class="bar"><span id="obar" style="width:' + opct + '%"></span></div></div>';
+
+        // Always-on cards (daily/weekly), collapsed by default
+        ALWAYS.forEach(function(sec){
+            var el = sectionEl(sec, sec.id, false, false);
+            el.setAttribute('data-sec', sec.id); el.__sec = sec;
+            app.appendChild(el);
+        });
+
+        // Week cards; current week open
+        WEEKS.forEach(function(sec, i){
+            var el = sectionEl(sec, sec.wk, i === cur, i === cur);
+            el.setAttribute('data-sec', sec.wk); el.__sec = sec;
+            app.appendChild(el);
+        });
+
+        var f = document.createElement('div');
+        f.className = 'footer';
+        f.innerHTML = 'Private view · progress saved in this browser only (not synced). ' +
+            'Full source of truth: <a href="/2026-plan.md">2026-plan.md</a>.' +
+            '<br><button class="btn-reset" onclick="resetAll()">reset all progress</button>';
+        app.appendChild(f);
+    }
+
+    function resetAll() {
+        if (!confirm('Clear every tick? This cannot be undone.')) return;
+        state = {}; save(state); render();
+    }
+
+    // ─── Boot ───
+    if (LOCAL || sessionStorage.getItem('planAuth') === '1') { reveal(); }
+    </script>
+</body>
+</html>
